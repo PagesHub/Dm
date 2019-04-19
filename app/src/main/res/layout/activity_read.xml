@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cdl"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.news.ReadActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collapsingToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
+            app:expandedTitleTextAppearance="@style/CollapsingToolbar"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:padding="@dimen/layout_margin_10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.yang.sdk.weight.CircleImageView
+                    android:id="@+id/icon"
+                    android:src="@drawable/shape_empty_bg"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="@dimen/layout_margin_15dp"
+                    app:is_circle="true"
+                    app:layout_constraintHeight_percent="0.618"
+                    app:layout_constraintDimensionRatio="H,1:1"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txv_name"
+                    android:layout_marginTop="@dimen/layout_margin_5dp"
+                    android:textSize="@dimen/text_size_22sp"
+                    android:layout_width="0dp"
+                    android:text="@string/read_name"
+                    android:textColor="@color/blue"
+                    android:layout_marginEnd="@dimen/layout_margin_15dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/icon"
+                    app:layout_constraintTop_toTopOf="parent"
+                    style="@style/TextViewStyle"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txv_desc"
+                    android:text="@string/read_desc"
+                    android:layout_marginTop="@dimen/layout_margin_5dp"
+                    android:textSize="@dimen/text_size_13sp"
+                    android:textColor="@color/color_bb"
+                    android:layout_width="0dp"
+                    app:layout_constraintEnd_toEndOf="@id/txv_name"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txv_name"
+                    style="@style/TextViewStyle"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txv_home"
+                    android:text="@string/read_home"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:layout_marginTop="@dimen/layout_margin_5dp"
+                    android:textSize="@dimen/text_size_14sp"
+                    android:layout_width="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txv_desc"
+                    style="@style/TextViewStyle"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txv_url"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:textColor="@color/blue"
+                    android:text="@string/null_string"
+                    android:layout_marginTop="@dimen/layout_margin_5dp"
+                    android:textSize="@dimen/text_size_14sp"
+                    android:layout_width="0dp"
+                    android:layout_marginStart="@dimen/layout_margin_10dp"
+                    app:layout_constraintEnd_toEndOf="@id/txv_name"
+                    app:layout_constraintStart_toEndOf="@id/txv_home"
+                    app:layout_constraintBaseline_toBaselineOf="@id/txv_home"
+                    style="@style/TextViewStyle"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <com.yang.dm.widget.DmRecyclerView
+        android:id="@+id/recyclerView"
+        android:background="@color/color_f5"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

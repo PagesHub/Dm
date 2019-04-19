@@ -1,0 +1,27 @@
+<resources>
+    <!-- CoordinatorLayout Behavior -->
+    <string name="bottom_navigation_view_behavior" translatable="false">com.yang.dm.widget.BottomNavigationViewBehavior</string>
+    <string name="app_name">Dm</string>
+    <string name="welcome">Welcome</string>
+    <string name="app_on_keyBack">再按一次退出</string>
+
+    <!-- Main.底部导航 -->
+    <string name="info">资讯</string>
+    <string name="video">视讯</string>
+    <string name="news">闲读</string>
+    <string name="home">首页</string>
+    <!-- homeTab标题 -->
+    <string name="tab_title_all">全部</string>
+    <string name="tab_title_android">Android</string>
+    <string name="tab_title_ios">iOS</string>
+    <string name="tab_title_res">拓展资源</string>
+    <string name="tab_title_front_end">前端</string>
+    <string name="tab_title_random">瞎推荐</string>
+    <string name="tab_title_app">App</string>
+    <!-- Read内容 -->
+    <string name="read_name">博主</string>
+    <string name="read_desc">个性签名</string>
+    <string name="read_home">主页</string>
+    <!-- Video内容 -->
+    <string name="video_provider">来源:%s</string>
+</resources>

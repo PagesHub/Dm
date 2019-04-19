@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.yang.dm.widget.DmCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginStart="@dimen/layout_margin_2dp"
+    android:layout_marginEnd="@dimen/layout_margin_2dp"
+    android:foreground="?android:attr/selectableItemBackground"
+    card_view:cardBackgroundColor="@color/white"
+    card_view:cardCornerRadius="@dimen/layout_margin_2dp"
+    card_view:cardUseCompatPadding="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/layout_margin_5dp">
+
+        <cn.jzvd.JzvdStd
+            android:id="@+id/videoPlayer"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/layout_margin_250dp"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:textSize="@dimen/text_size_16sp"
+            android:layout_marginStart="@dimen/layout_margin_5dp"
+            android:layout_marginEnd="@dimen/layout_margin_5dp"
+            app:layout_constraintTop_toBottomOf="@id/videoPlayer"
+            style="@style/TextViewStyle"/>
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txv_content"
+            android:textColor="@color/color_99"
+            android:layout_width="0dp"
+            android:layout_marginTop="@dimen/layout_margin_5dp"
+            app:layout_constraintStart_toStartOf="@id/txv_title"
+            app:layout_constraintEnd_toEndOf="@id/txv_title"
+            app:layout_constraintTop_toBottomOf="@id/txv_title"
+            style="@style/TextViewStyle"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/author_avatar"
+            android:src="@mipmap/ic_launcher_round"
+            android:layout_marginTop="@dimen/layout_margin_5dp"
+            android:layout_width="@dimen/layout_margin_50dp"
+            android:layout_height="@dimen/layout_margin_50dp"
+            app:layout_constraintStart_toStartOf="@id/txv_title"
+            app:layout_constraintTop_toBottomOf="@id/txv_content"
+            app:is_circle="true"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txv_name"
+            android:textColor="@color/theme"
+            android:textSize="@dimen/text_size_15sp"
+            android:layout_marginStart="@dimen/layout_margin_10dp"
+            app:layout_constraintBottom_toTopOf="@id/txv_time"
+            app:layout_constraintStart_toEndOf="@id/author_avatar"
+            app:layout_constraintTop_toTopOf="@id/author_avatar"
+            style="@style/TextViewStyle"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txv_time"
+            android:textSize="@dimen/text_size_12sp"
+            android:textColor="@color/color_99"
+            app:layout_constraintStart_toStartOf="@id/txv_name"
+            app:layout_constraintTop_toBottomOf="@id/txv_name"
+            app:layout_constraintBottom_toBottomOf="@id/author_avatar"
+            style="@style/TextViewStyle"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txv_provider"
+            android:textColor="@color/color_99"
+            app:layout_constraintEnd_toEndOf="@id/txv_title"
+            app:layout_constraintBottom_toBottomOf="@id/author_avatar"
+            style="@style/TextViewStyle"/>
+
+        <com.yang.sdk.weight.CircleImageView
+            android:id="@+id/provider_avatar"
+            android:visibility="gone"
+            android:layout_marginEnd="@dimen/layout_margin_10dp"
+            android:src="@mipmap/ic_launcher_round"
+            android:layout_width="@dimen/layout_margin_30dp"
+            android:layout_height="@dimen/layout_margin_30dp"
+            app:layout_constraintBottom_toTopOf="@id/txv_provider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:is_circle="true"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.yang.dm.widget.DmCardView>
