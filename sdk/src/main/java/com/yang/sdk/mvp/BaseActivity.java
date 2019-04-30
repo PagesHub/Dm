@@ -46,7 +46,10 @@ public abstract class BaseActivity extends BaseAppCompatActivity implements Base
     }
 
     /**
-     * @return 绑定布局
+     * @author Yang
+     * Description    绑定布局
+     * CreateDate     2019/4/26 11:23
+     * @return
      */
     protected abstract int bindLayout();
 
@@ -54,6 +57,7 @@ public abstract class BaseActivity extends BaseAppCompatActivity implements Base
      * init view
      * 子类实现 控件绑定、视图初始化等内容
      */
+    @Override
     protected abstract void initView();
 
     /**
@@ -169,6 +173,8 @@ public abstract class BaseActivity extends BaseAppCompatActivity implements Base
         switch (item.getItemId()) {
             case android.R.id.home:
                 onBackPressed();
+                break;
+            default:
                 break;
         }
         return super.onOptionsItemSelected(item);

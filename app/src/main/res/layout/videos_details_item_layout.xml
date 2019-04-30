@@ -46,7 +46,7 @@
             app:layout_constraintTop_toBottomOf="@id/txv_title"
             style="@style/TextViewStyle"/>
 
-        <androidx.appcompat.widget.AppCompatTextView
+        <com.yang.sdk.weight.CircleImageView
             android:id="@+id/author_avatar"
             android:src="@mipmap/ic_launcher_round"
             android:layout_marginTop="@dimen/layout_margin_5dp"

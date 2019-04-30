@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.yang.dm.R;
-import com.yang.dm.base.DmBaseActivity;
+import com.yang.dm.base.BaseDmActivity;
 import com.yang.dm.mvp.contract.ReadContract;
 import com.yang.dm.mvp.model.Read;
 import com.yang.dm.mvp.presenter.ReadPresenter;
@@ -28,8 +28,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import io.reactivex.annotations.NonNull;
 
+/**
+ * @author
+ */
 @Xml(layouts = "activity_read")
-public class ReadActivity extends DmBaseActivity implements ReadContract.View {
+public class ReadActivity extends BaseDmActivity implements ReadContract.View {
     @Inject
     ReadPresenter mPresenter;
     @BindView(R.id.recyclerView)

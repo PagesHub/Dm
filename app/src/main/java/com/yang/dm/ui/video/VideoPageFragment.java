@@ -8,7 +8,7 @@ import android.widget.FrameLayout;
 
 import com.yang.dm.R;
 import com.yang.dm.app.DmConstants;
-import com.yang.dm.base.DmBaseFragment;
+import com.yang.dm.base.BaseDmFragment;
 import com.yang.dm.mvp.contract.VideoPagerContract;
 import com.yang.dm.mvp.model.ContentBean;
 import com.yang.dm.mvp.model.VideoDetails;
@@ -34,10 +34,11 @@ import butterknife.BindView;
 
 /**
  * Describe:
- * Created by Yang on 2019/1/22.
+ *
+ * @author Created by Yang on 2019/1/22.
  */
 @Xml(layouts = "fragment_video_pager")
-public class VideoPageFragment extends DmBaseFragment implements VideoPagerContract.View {
+public class VideoPageFragment extends BaseDmFragment implements VideoPagerContract.View {
     @Inject
     VideoPagerPresenter mPresenter;
     @BindView(R.id.viewStub)
@@ -81,7 +82,7 @@ public class VideoPageFragment extends DmBaseFragment implements VideoPagerContr
 
     @Override
     protected void initView() {
-        fragmentComponent .inject(this);
+        fragmentComponent.inject(this);
         mPresenter.attachView(this);
         mApiUrl = Objects.requireNonNull(getArguments()).getString("apiUrl");
         mID = Objects.requireNonNull(getArguments()).getInt("id");
@@ -101,7 +102,7 @@ public class VideoPageFragment extends DmBaseFragment implements VideoPagerContr
      * 设置列表界面
      */
     private void initListView() {
-        RecyclerView recyclerView=getView(R.id.recyclerView);
+        RecyclerView recyclerView = getView(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(mContext));
         mAdapter = new VideoDetailsItemAdapter();
         mAdapter.openLoadAnimation();
@@ -130,6 +131,8 @@ public class VideoPageFragment extends DmBaseFragment implements VideoPagerContr
             case -3:
                 break;
             case -4:
+                break;
+            default:
                 break;
         }
         frameLayout.addView(getLayoutInflater().inflate(layoutRes, null));
@@ -160,9 +163,9 @@ public class VideoPageFragment extends DmBaseFragment implements VideoPagerContr
         setText(R.id.txv_all_top, mDsData.get(10).getData().getText());
         setText(R.id.txv_special, mDsData.get(11).getData().getHeader().getTitle());
         setText(R.id.txv_author, mDsData.get(12).getData().getText());
-         setClassifyList(classifyData);
-         setTopList();
-         setHotAuthorList();
+        setClassifyList(classifyData);
+        setTopList();
+        setHotAuthorList();
     }
 
     /**

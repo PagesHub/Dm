@@ -1,4 +1,4 @@
-include ':app', ':sdk', ':chat'
+include ':app', ':sdk', ':chat', ':wandroid'
 setBinding(new Binding([gradle: this]))// 以下需要根据你的 FlutterModule 的实际目录来配置，最终需要的路径是 FlutterModule 项目里的 .android/include_flutter.groovy
 evaluate(new File(
         'flutter_dm/.android/include_flutter.groovy'

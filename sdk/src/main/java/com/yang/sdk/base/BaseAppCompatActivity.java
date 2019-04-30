@@ -63,7 +63,6 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity {
      * init view
      * 子类实现 控件绑定、视图初始化等内容
      */
-    @Deprecated
     protected abstract void initView();
 
     /**

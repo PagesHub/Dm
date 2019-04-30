@@ -4,7 +4,7 @@ import android.view.View;
 
 import com.androidkun.xtablayout.XTabLayout;
 import com.yang.dm.R;
-import com.yang.dm.base.DmBaseFragment;
+import com.yang.dm.base.BaseDmFragment;
 import com.yang.dm.mvp.contract.VideoContract;
 import com.yang.dm.mvp.model.VideoTab;
 import com.yang.dm.mvp.model.VideoTabAdapterItem;
@@ -22,10 +22,10 @@ import butterknife.BindView;
 
 /**
  * Describe: 视频
- * Created by Yang on 2019/1/3.
+ * @author Created by Yang on 2019/1/3.
  */
 @Xml(layouts = "fragment_video")
-public class VideoFragment extends DmBaseFragment implements VideoContract.View {
+public class VideoFragment extends BaseDmFragment implements VideoContract.View {
     @Inject
     VideoPresenter mPresenter;
     @BindView(R.id.video_tab)

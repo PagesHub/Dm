@@ -7,8 +7,6 @@ import com.yang.dm.mvp.model.VideoDetails;
 import com.yang.sdk.loader.GlideUtils;
 import com.yang.sdk.utils.DateUtils;
 
-import java.util.Objects;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import cn.jzvd.Jzvd;
@@ -29,7 +27,7 @@ public class VideoDetailsItemAdapter extends BaseQuickAdapter<VideoDetails, Base
     protected void convert(BaseViewHolder helper, VideoDetails item) {
         mJzvdStd=helper.getView(R.id.videoPlayer);
         helper.setText(R.id.txv_title, item.getData().getHeader().getTitle());
-        helper.setText(R.id.txv_name, Objects.requireNonNull(item.getData().getContent().getData().getAuthor()).getName());
+        helper.setText(R.id.txv_name, item.getData().getContent().getData().getAuthor()==null?"":item.getData().getContent().getData().getAuthor().getName());
         helper.setText(R.id.txv_provider, String.format(mContext.getString(R.string.video_provider), item.getData().getContent().getData().getProvider().getName()));
         helper.setVisible(R.id.provider_avatar, !item.getData().getContent().getData().getProvider().getIcon().isEmpty());
         GlideUtils.getInstance().glideLoad(mContext, item.getData().getContent().getData().getProvider().getIcon(), helper.getView(R.id.provider_avatar), 0);

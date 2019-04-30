@@ -6,7 +6,7 @@ import android.view.View;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.yang.dm.R;
 import com.yang.dm.app.DmConstants;
-import com.yang.dm.base.DmBaseFragment;
+import com.yang.dm.base.BaseDmFragment;
 import com.yang.dm.mvp.contract.HomePagerContract;
 import com.yang.dm.mvp.model.GanHuo;
 import com.yang.dm.mvp.presenter.HomePagerPresenter;
@@ -25,10 +25,11 @@ import butterknife.BindView;
 
 /**
  * Describe:
- * Created by Yang on 2019/1/22.
+ *
+ * @author Created by Yang on 2019/1/22.
  */
 @Xml(layouts = "fragment_home_pager")
-public class HomePageFragment extends DmBaseFragment implements HomePagerContract.View {
+public class HomePageFragment extends BaseDmFragment implements HomePagerContract.View {
     @Inject
     HomePagerPresenter mPresenter;
     @BindView(R.id.recyclerView)

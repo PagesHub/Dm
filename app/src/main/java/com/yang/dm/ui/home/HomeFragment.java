@@ -4,7 +4,7 @@ import android.view.View;
 
 import com.androidkun.xtablayout.XTabLayout;
 import com.yang.dm.R;
-import com.yang.dm.base.DmBaseFragment;
+import com.yang.dm.base.BaseDmFragment;
 import com.yang.dm.mvp.contract.HomeContract;
 import com.yang.dm.mvp.model.HomeTabAdapterItem;
 import com.yang.dm.mvp.presenter.HomePresenter;
@@ -20,10 +20,11 @@ import butterknife.BindView;
 
 /**
  * Describe: 主页
- * Created by Yang on 2019/1/3.
+ *
+ * @author Created by Yang on 2019/1/3.
  */
 @Xml(layouts = "fragment_home")
-public class HomeFragment extends DmBaseFragment implements HomeContract.View {
+public class HomeFragment extends BaseDmFragment implements HomeContract.View {
     @Inject
     HomePresenter mPresenter;
     @BindView(R.id.home_tab)

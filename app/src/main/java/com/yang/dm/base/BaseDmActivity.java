@@ -10,12 +10,12 @@ import com.yang.sdk.mvp.BaseActivity;
 import androidx.annotation.Nullable;
 
 /**
- * Describe:
- * Created by Yang on 2019/4/17.
+  * @author        Yang
+  * Description    java类作用描述
+  * CreateDate     2019/4/26 11:30
  */
-public abstract class DmBaseActivity extends BaseActivity {
+public abstract class BaseDmActivity extends BaseActivity {
     protected ActivityComponent activityComponent;
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

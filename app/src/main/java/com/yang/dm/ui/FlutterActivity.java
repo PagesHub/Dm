@@ -4,7 +4,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 
 import com.yang.dm.R;
-import com.yang.dm.base.DmBaseActivity;
+import com.yang.dm.base.BaseDmActivity;
 import com.zhangyue.we.x2c.ano.Xml;
 
 import io.flutter.facade.Flutter;
@@ -13,10 +13,10 @@ import io.flutter.view.FlutterView;
 
 /**
  * Describe: flutter跳转界面
- * Created by Yang on 2019/3/26.
+ * @author Created by Yang on 2019/3/26.
  */
 @Xml(layouts = "activity_flutter")
-public class FlutterActivity extends DmBaseActivity {
+public class FlutterActivity extends BaseDmActivity {
     @Override
     protected int bindLayout() {
         return R.layout.activity_flutter;

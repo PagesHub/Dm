@@ -5,15 +5,17 @@ import android.animation.AnimatorSet;
 import android.animation.ValueAnimator;
 import android.view.View;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomnavigation.LabelVisibilityMode;
+import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
+import com.yang.chat.ChatMainActivity;
 import com.yang.dm.R;
-import com.yang.dm.base.DmBaseActivity;
+import com.yang.dm.base.BaseDmActivity;
 import com.yang.dm.mvp.contract.MainContract;
 import com.yang.dm.mvp.presenter.MainPresenter;
 import com.yang.dm.widget.DmFloatingActionButton;
 import com.yang.sdk.utils.PerfectClickListener;
 import com.yang.sdk.utils.animation.FabAnimator;
+import com.yang.wandroid.WAMainActivity;
 import com.zhangyue.we.x2c.ano.Xml;
 
 import javax.inject.Inject;
@@ -23,13 +25,17 @@ import androidx.fragment.app.FragmentManager;
 import butterknife.BindView;
 import cn.jzvd.Jzvd;
 
-
+/**
+  * @author        Yang
+  * Description    java类作用描述
+  * CreateDate     2019/4/26 11:15
+ */
 @Xml(layouts = "activity_main")
-public class MainActivity extends DmBaseActivity implements MainContract.View, FabAnimator.FabAnimatorListener {
+public class MainActivity extends BaseDmActivity implements MainContract.View, FabAnimator.FabAnimatorListener {
     @Inject
     MainPresenter mainPresenter;
     @BindView(R.id.bottom_nav)
-    BottomNavigationView mBottomNv;
+    BottomNavigationViewEx mBottomNv;
     @BindView(R.id.fab_add)
     DmFloatingActionButton mFabAdd;
     @BindView(R.id.fab_like)
@@ -44,7 +50,9 @@ public class MainActivity extends DmBaseActivity implements MainContract.View, F
     Group mGpWrite;
     @BindView(R.id.gp_top)
     Group mGpTop;
-    // 动画集合，用来控制动画的有序播放
+    /**
+     * 动画集合，用来控制动画的有序播放
+     */
     private AnimatorSet mAnimatorSet;
     private FabAnimator mFabAnimator;
     private FragmentManager mFragmentManager;
@@ -89,12 +97,15 @@ public class MainActivity extends DmBaseActivity implements MainContract.View, F
                     initFabAnimator();
                     break;
                 case R.id.fab_like:
+                    readyGo(WAMainActivity.class);
                     break;
                 case R.id.fab_write:
-
+                    readyGo(ChatMainActivity.class);
                     break;
                 case R.id.fab_top:
                     readyGo(FlutterActivity.class);
+                    break;
+                default:
                     break;
             }
         }
@@ -104,7 +115,7 @@ public class MainActivity extends DmBaseActivity implements MainContract.View, F
      * 设置底部标题
      */
     private void setupBottomNavigationView() {
-        //mBottomNv.enableAnimation(false);
+        mBottomNv.enableAnimation(false);
         mBottomNv.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_LABELED);
         mBottomNv.setItemHorizontalTranslationEnabled(false);
         mBottomNv.setOnNavigationItemSelectedListener(item -> {
@@ -121,6 +132,8 @@ public class MainActivity extends DmBaseActivity implements MainContract.View, F
                 case R.id.info:
                     mainPresenter.selectFragment(mFragmentManager, 3);
                     break;
+                default:
+                    break;
             }
             return true;
         });
@@ -130,8 +143,11 @@ public class MainActivity extends DmBaseActivity implements MainContract.View, F
      * 点击事件
      */
     private void initFabAnimator() {
-        if (mFabAnimator == null || mAnimatorSet != null && mAnimatorSet.isRunning())// 播放动画的时候不可以点击
+        boolean is = mFabAnimator == null || mAnimatorSet != null && mAnimatorSet.isRunning();
+        // 播放动画的时候不可以点击
+        if (is) {
             return;
+        }
         mAnimatorSet = new AnimatorSet();
         boolean visible = mFabLike.getVisibility() == View.VISIBLE;
         ValueAnimator likeAnimator = mFabAnimator.getValueAnimator(mFabLike, visible, mGpLike, 0);

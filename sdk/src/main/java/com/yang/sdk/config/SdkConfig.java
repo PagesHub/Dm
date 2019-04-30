@@ -6,6 +6,7 @@ import com.alibaba.android.arouter.BuildConfig;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.blankj.utilcode.util.Utils;
 import com.hjq.toast.ToastUtils;
+import com.squareup.leakcanary.LeakCanary;
 import com.tencent.smtt.sdk.QbSdk;
 import com.yang.sdk.callback.BaseLifecycleCallback;
 import com.yang.sdk.utils.LogUtils;
@@ -26,6 +27,7 @@ public enum SdkConfig {
         Utils.init(application);
         ToastUtils.init(application);
         BaseLifecycleCallback.getInstance().init(application);
+        LeakCanary.install(application);
         initARouter();
         initX5WebCore();
         initThreadPool();

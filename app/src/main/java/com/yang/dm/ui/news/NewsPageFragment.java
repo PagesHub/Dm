@@ -6,7 +6,7 @@ import android.view.View;
 
 import com.yang.dm.R;
 import com.yang.dm.app.DmConstants;
-import com.yang.dm.base.DmBaseFragment;
+import com.yang.dm.base.BaseDmFragment;
 import com.yang.dm.mvp.contract.NewsPagerContract;
 import com.yang.dm.mvp.model.ReadClassifyChild;
 import com.yang.dm.mvp.presenter.NewsPagerPresenter;
@@ -25,10 +25,10 @@ import butterknife.BindView;
 
 /**
  * Describe:
- * Created by Yang on 2019/1/22.
+ *@author  Created by Yang on 2019/1/22.
  */
 @Xml(layouts = "fragment_news_pager")
-public class NewsPageFragment extends DmBaseFragment implements NewsPagerContract.View {
+public class NewsPageFragment extends BaseDmFragment implements NewsPagerContract.View {
     @Inject
     NewsPagerPresenter mPresenter;
     @BindView(R.id.recyclerView)

@@ -4,7 +4,7 @@ import android.view.View;
 
 import com.androidkun.xtablayout.XTabLayout;
 import com.yang.dm.R;
-import com.yang.dm.base.DmBaseFragment;
+import com.yang.dm.base.BaseDmFragment;
 import com.yang.dm.mvp.contract.NewsContract;
 import com.yang.dm.mvp.model.NewsTabAdapterItem;
 import com.yang.dm.mvp.model.ReadClassify;
@@ -22,10 +22,10 @@ import butterknife.BindView;
 
 /**
  * Describe: 杂闻
- * Created by Yang on 2019/1/3.
+ * @author Created by Yang on 2019/1/3.
  */
 @Xml(layouts = "fragment_news")
-public class NewsFragment extends DmBaseFragment implements NewsContract.View {
+public class NewsFragment extends BaseDmFragment implements NewsContract.View {
 
     @Inject
     NewsPresenter mPresenter;

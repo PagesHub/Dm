@@ -2,7 +2,7 @@ package com.yang.dm.ui;
 
 
 import com.yang.dm.R;
-import com.yang.dm.base.DmBaseActivity;
+import com.yang.dm.base.BaseDmActivity;
 import com.zhangyue.we.x2c.ano.Xml;
 
 import java.util.concurrent.TimeUnit;
@@ -13,8 +13,11 @@ import io.reactivex.Flowable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 
+/**
+ * @author
+ */
 @Xml(layouts = "activity_launcher")
-public class LauncherActivity extends DmBaseActivity {
+public class LauncherActivity extends BaseDmActivity {
     @BindView(R.id.txv_number)
     AppCompatTextView txvNumber;
     private Disposable disposable;

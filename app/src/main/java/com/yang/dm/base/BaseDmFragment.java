@@ -10,10 +10,11 @@ import com.yang.sdk.mvp.BaseFragment;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Describe:
- * Created by Yang on 2019/4/17.
+  * @author        Yang
+  * Description    java类作用描述
+  * CreateDate     2019/4/26 11:31
  */
-public abstract class DmBaseFragment extends BaseFragment {
+public abstract class BaseDmFragment extends BaseFragment {
     protected FragmentComponent fragmentComponent;
 
     @Override
