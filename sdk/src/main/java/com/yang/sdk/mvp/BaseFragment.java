@@ -128,6 +128,11 @@ public abstract class BaseFragment extends BaseLazyFragment implements BaseContr
     }
 
     @Override
+    protected View getLoadingTargetView() {
+        return null;
+    }
+
+    @Override
     public void showLoading() {
         toggleShowLoading(true);
     }
