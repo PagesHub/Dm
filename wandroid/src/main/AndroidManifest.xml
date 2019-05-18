@@ -6,7 +6,7 @@
     <application
         android:name=".base.WAndroidApp"
         tools:replace="android:name">
-        <activity android:name=".WAMainActivity">
+        <activity android:name=".ui.WAMainActivity">
         </activity>
     </application>
 </manifest>

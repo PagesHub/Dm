@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".WAMainActivity">
+    tools:context=".ui.WAMainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -16,17 +16,23 @@
             android:layout_width="0dp"
             android:layout_height="@dimen/layout_margin_45dp"
             app:xTabMode="scrollable"
+            android:background="@color/theme"
+            app:tabIndicatorColor="@color/color_tab"
+            app:tabRippleColor="@color/colorTransparent"
+            app:tabTextAppearance="@style/TabTextStyle"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/btn_search"
             app:layout_constraintTop_toTopOf="parent"/>
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/btn_search"
+            android:padding="@dimen/layout_margin_10dp"
             android:layout_width="@dimen/layout_margin_45dp"
             android:layout_height="@dimen/layout_margin_45dp"
+            android:background="@color/theme"
+            android:src="@drawable/search"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
-
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/viewPager2"
             android:layout_width="match_parent"

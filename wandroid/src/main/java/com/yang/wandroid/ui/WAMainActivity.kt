@@ -1,12 +1,13 @@
-package com.yang.wandroid
+package com.yang.wandroid.ui
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.yang.sdk.mvp.BaseActivity
-import com.yang.wandroid.ui.HomeFragment
-import com.yang.wandroid.ui.NavigationFragment
-import com.yang.wandroid.ui.ProjectFragment
-import com.yang.wandroid.ui.SystemFragment
+import com.yang.wandroid.R
+import com.yang.wandroid.ui.home.HomeFragment
+import com.yang.wandroid.ui.navigation.NavigationFragment
+import com.yang.wandroid.ui.project.ProjectFragment
+import com.yang.wandroid.ui.system.SystemFragment
 import com.yang.wandroid.weight.TabLayoutMediator
 import com.zhangyue.we.x2c.ano.Xml
 import kotlinx.android.synthetic.main.activity_wa_main.*

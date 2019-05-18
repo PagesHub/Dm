@@ -15,7 +15,7 @@ import com.yang.dm.mvp.presenter.MainPresenter;
 import com.yang.dm.widget.DmFloatingActionButton;
 import com.yang.sdk.utils.PerfectClickListener;
 import com.yang.sdk.utils.animation.FabAnimator;
-import com.yang.wandroid.WAMainActivity;
+import com.yang.wandroid.ui.WAMainActivity;
 import com.zhangyue.we.x2c.ano.Xml;
 
 import javax.inject.Inject;

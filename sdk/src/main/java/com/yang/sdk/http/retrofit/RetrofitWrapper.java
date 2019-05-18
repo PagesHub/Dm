@@ -85,7 +85,7 @@ public class RetrofitWrapper {
      *
      * @param url baseUrl
      */
-    public RetrofitWrapper(String url, ArrayList<Interceptor> interceptors) {
+    private RetrofitWrapper(String url, ArrayList<Interceptor> interceptors) {
         builder = new OkHttpClient.Builder();
         //拦截日志，依赖
         builder.addInterceptor(InterceptorUtils.getHttpLoggingInterceptor(BuildConfig.DEBUG));
