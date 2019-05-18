@@ -12,7 +12,7 @@ import retrofit2.http.Path
  * Description    java类作用描述
  * CreateDate     2019/5/17 10:55
  */
-interface WApiSerivce {
+interface WApiService {
 
     companion object {
         const val BASE_URL = "https://www.wanandroid.com"
