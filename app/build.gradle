@@ -21,8 +21,8 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    //jdk1.8
-    compileOptions {
+
+    compileOptions {    //jdk1.8
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
@@ -36,10 +36,12 @@ dependencies {
     //chat module
     implementation project(':chat')
     //Kotlin WanAndroid
-    implementation project(path: ':wandroid')
+    implementation project(':kotlin')
+
+
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.2.0-beta01'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0-beta01'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     annotationProcessor 'com.google.dagger:dagger-compiler:2.22.1'
     annotationProcessor "com.jakewharton:butterknife-compiler:10.1.0"
 }

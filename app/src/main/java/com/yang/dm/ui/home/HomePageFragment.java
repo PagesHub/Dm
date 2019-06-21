@@ -11,6 +11,7 @@ import com.yang.dm.mvp.contract.HomePagerContract;
 import com.yang.dm.mvp.model.GanHuo;
 import com.yang.dm.mvp.presenter.HomePagerPresenter;
 import com.yang.dm.ui.adapter.HomePagerItemAdapter;
+import com.yang.sdk.constant.Constant;
 import com.yang.sdk.web.WebActivity;
 import com.zhangyue.we.x2c.ano.Xml;
 
@@ -72,8 +73,8 @@ public class HomePageFragment extends BaseDmFragment implements HomePagerContrac
         mAdapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN);
         mAdapter.setOnItemClickListener((adapter, view, position) -> {
             Bundle bundle = new Bundle();
-            bundle.putString("WebUrl", mAdapter.getData().get(position).getUrl());
-            bundle.putString("Title", mAdapter.getData().get(position).getDesc());
+            bundle.putString(Constant.WEB_URL, mAdapter.getData().get(position).getUrl());
+            bundle.putString(Constant.WEB_TITLE, mAdapter.getData().get(position).getDesc());
             readyGo(WebActivity.class, bundle);
         });
         mAdapter.setOnLoadMoreListener(() -> {

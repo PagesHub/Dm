@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">kotlin</string>
+
+    <string-array name="tab_title">
+        <item>首页</item>
+        <item>体系</item>
+        <item>完整项目</item>
+        <item>导航</item>
+    </string-array>
+</resources>

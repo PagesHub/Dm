@@ -13,22 +13,23 @@ import com.yang.dm.base.BaseDmActivity;
 import com.yang.dm.mvp.contract.MainContract;
 import com.yang.dm.mvp.presenter.MainPresenter;
 import com.yang.dm.widget.DmFloatingActionButton;
+import com.yang.kotlin.ui.KtMainActivity;
 import com.yang.sdk.utils.PerfectClickListener;
 import com.yang.sdk.utils.animation.FabAnimator;
-import com.yang.wandroid.ui.WAMainActivity;
 import com.zhangyue.we.x2c.ano.Xml;
 
 import javax.inject.Inject;
 
 import androidx.constraintlayout.widget.Group;
 import androidx.fragment.app.FragmentManager;
+
 import butterknife.BindView;
 import cn.jzvd.Jzvd;
 
 /**
-  * @author        Yang
-  * Description    java类作用描述
-  * CreateDate     2019/4/26 11:15
+ * @author Yang
+ * Description    java类作用描述
+ * CreateDate     2019/4/26 11:15
  */
 @Xml(layouts = "activity_main")
 public class MainActivity extends BaseDmActivity implements MainContract.View, FabAnimator.FabAnimatorListener {
@@ -97,7 +98,7 @@ public class MainActivity extends BaseDmActivity implements MainContract.View, F
                     initFabAnimator();
                     break;
                 case R.id.fab_like:
-                    readyGo(WAMainActivity.class);
+                    readyGo(KtMainActivity.class);
                     break;
                 case R.id.fab_write:
                     readyGo(ChatMainActivity.class);

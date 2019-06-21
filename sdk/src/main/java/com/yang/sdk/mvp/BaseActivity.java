@@ -16,6 +16,7 @@ import java.util.Calendar;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
+
 import butterknife.ButterKnife;
 
 /**
@@ -46,10 +47,10 @@ public abstract class BaseActivity extends BaseAppCompatActivity implements Base
     }
 
     /**
+     * @return
      * @author Yang
      * Description    绑定布局
      * CreateDate     2019/4/26 11:23
-     * @return
      */
     protected abstract int bindLayout();
 
@@ -113,7 +114,7 @@ public abstract class BaseActivity extends BaseAppCompatActivity implements Base
      * 设置Toolbar标题
      */
     protected void setToolbarTitle(@NonNull String title, int menuRes, boolean goBack) {
-        mToolbar = getView(R.id.toolbar);
+        mToolbar = getView(R.id.mToolbar);
         mToolbar.setTitle("");
         mTitle = getView(R.id.txv_toolbar_title);
         mTitle.setText(title);
@@ -123,11 +124,6 @@ public abstract class BaseActivity extends BaseAppCompatActivity implements Base
         if (goBack)
             mToolbar.setNavigationOnClickListener(v -> finish());
         else mToolbar.setNavigationIcon(null);
-    }
-
-    @NonNull
-    protected Toolbar getToolbar() {
-        return mToolbar;
     }
 
     @Override
