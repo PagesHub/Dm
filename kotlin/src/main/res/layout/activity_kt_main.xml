@@ -18,7 +18,7 @@
             app:layout_constraintEnd_toStartOf="@id/btn_search"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tabIndicatorColor="@color/color_tab"
+            app:tabIndicatorColor="@color/white"
             app:tabRippleColor="@color/colorTransparent"
             app:tabTextAppearance="@style/TabTextStyle"
             app:xTabMode="scrollable" />

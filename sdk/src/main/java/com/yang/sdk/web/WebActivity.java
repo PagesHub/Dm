@@ -1,17 +1,11 @@
 package com.yang.sdk.web;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.MenuItem;
 
-import androidx.appcompat.widget.Toolbar;
-
-import com.tencent.smtt.sdk.WebView;
-import com.tencent.smtt.sdk.WebViewClient;
 import com.yang.sdk.R;
-import com.yang.sdk.constant.Constant;
+import com.yang.sdk.constant.Constants;
 import com.yang.sdk.mvp.BaseActivity;
 import com.zhangyue.we.x2c.ano.Xml;
 
@@ -22,8 +16,8 @@ public class WebActivity extends BaseActivity {
 
     @Override
     protected void getBundleExtras(Bundle extras) {
-        mUrl = extras.getString(Constant.WEB_URL);
-        mTitle = extras.getString(Constant.WEB_TITLE);
+        mUrl = extras.getString(Constants.WEB_URL);
+        mTitle = extras.getString(Constants.WEB_TITLE);
     }
 
     @Override

@@ -29,8 +29,10 @@ abstract class KotlinActivity<VM : KotlinViewModule> : BaseActivity() {
     open fun providerVMClass(): Class<VM>? = null
 
     override fun onDestroy() {
+        mViewModel.let {
+            lifecycle.removeObserver(it)
+        }
         super.onDestroy()
-        lifecycle.removeObserver(mViewModel)
     }
 
 }

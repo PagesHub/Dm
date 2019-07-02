@@ -5,14 +5,10 @@ import android.animation.ValueAnimator;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 
+
 /**
- * ================================================
- * 作    者：杨充
- * 版    本：1.0
- * 创建日期：2017/9/31
- * 描    述：属性动画工具类
- * 修订历史：
- * ================================================
+ * Describe:属性动画工具类
+ * Created by Yang on 2019/6/26  14:14
  */
 public class AnimatorUtils {
 

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base application theme. -->
+    <style name="Base.AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@color/white</item>
+        <item name="android:actionMenuTextColor">@color/black</item>
+        <item name="android:windowIsTranslucent">false</item>
+    </style>
+    <!--普通主题-->
+    <style name="AppTheme" parent="Base.AppTheme" />
+    <!--Flutter跳转主题-->
+    <style name="FlutterTheme" parent="AppTheme">
+        <item name="android:windowBackground">@color/colorPrimaryDark</item>
+        <item name="android:windowAnimationStyle">@style/windowAnimation</item>
+    </style>
+
+    <style name="windowAnimation" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/pager_enter_animation</item>
+        <item name="android:windowExitAnimation">@anim/pager_exit_animation</item>
+    </style>
+    <!--全屏主题-->
+    <style name="NoTitleFullscreen" parent="Base.AppTheme">
+        <item name="android:windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <!-- 加载中样式 -->
+    <style name="style_loadingDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <!--  Dialog的windowFrame框为无  -->
+        <item name="android:windowIsFloating">true</item>
+        <!--  是否漂现在activity上  -->
+        <item name="android:windowIsTranslucent">true</item>
+        <!--  是否半透明  -->
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <!--  去除黑色边框的关键设置项  -->
+        <item name="android:backgroundDimEnabled">true</item>
+        <!--  屏幕背景是否变暗  -->
+        <item name="android:backgroundDimAmount">0.5</item>
+    </style>
+    <!--Toolbar样式-->
+    <style name="ToolbarStyle" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="actionBarItemBackground">@drawable/abc_item_background_holo_light</item>
+        <item name="selectableItemBackground">@drawable/abc_item_background_holo_light</item>
+        <item name="titleTextAppearance">@style/ToolBar.Title</item>
+        <item name="subtitleTextAppearance">@style/Toolbar.SubTitle</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+    <!--Toolbar标题-->
+    <style name="ToolBar.Title" parent="@style/TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">18.0sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <!--Toolbar副标题-->
+    <style name="Toolbar.SubTitle" parent="@style/TextAppearance.Widget.AppCompat.Toolbar.Subtitle">
+        <item name="android:textSize">9.0sp</item>
+        <item name="android:textColor">#99FFFFFF</item>
+    </style>
+    <!-- ToolbarPopWindow样式 -->
+    <style name="ToolbarPopupTheme" parent="@style/ThemeOverlay.AppCompat.Dark">
+        <item name="android:colorBackground">@color/white</item><!--这里可以改变菜单的背景色-->
+        <item name="actionOverflowMenuStyle">@style/OverflowMenuStyle
+        </item> <!--新增一个item，用于控制menu-->
+        <item name="android:textColor">@color/colorPrimary</item>`
+    </style>
+    <!-- PopupMenu样式 -->
+    <style name="OverflowMenuStyle" parent="Widget.AppCompat.Light.PopupMenu.Overflow">
+        <item name="overlapAnchor">false</item>  <!--把该属性改为false即可使menu位置位于toolbar之下-->
+    </style>
+    <!--ProgressBar样式-->
+    <style name="WebProgressBarStyle" parent="@style/Widget.AppCompat.ProgressBar.Horizontal">
+        <item name="android:background">@color/white</item>
+    </style>
+
+    <!--TextView样式-->
+    <style name="TextViewStyle" parent="android:Widget.TextView">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">@color/color_33</item>
+        <item name="android:textSize">@dimen/text_size_14sp</item>
+        <item name="android:text">@string/default_string</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:adjustViewBounds">true</item>
+    </style>
+</resources>

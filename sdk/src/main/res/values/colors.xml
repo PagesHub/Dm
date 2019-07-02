@@ -19,4 +19,18 @@
     <color name="backgroundColor">#F7F7F7</color>
     <color name="colorTransparent">#00000000</color>
     <color name="msg_color">#999999</color>
+
+    <!--黑色-各种等级透明度-->
+    <color name="black_alpha00">#ff000000</color>
+    <color name="black_alpha10">#1a000000</color>
+    <color name="black_alpha15">#26000000</color>
+    <color name="black_alpha20">#33000000</color>
+    <color name="black_alpha30">#4d000000</color>
+    <color name="black_alpha32">#52000000</color>
+    <color name="black_alpha40">#66000000</color>
+    <color name="black_alpha5">#0d000000</color>
+    <color name="black_alpha50">#80000000</color>
+    <color name="black_alpha54">#89000000</color>
+    <color name="black_alpha60">#99000000</color>
+    <color name="black_alpha80">#cc000000</color>
 </resources>

@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">main</string>
+    <string name="welcome">Welcome</string>
+    <string name="app_on_keyBack">再按一次退出</string>
+</resources>

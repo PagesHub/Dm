@@ -7,7 +7,7 @@ import android.util.Log;
  * Created by Yang on 2019/4/15.
  */
 public class LogUtils {
-    public static final String TAG = "Debug";
+    private static final String TAG = "Debug";
 
     // 开发调试状态
     public static boolean debug = true;

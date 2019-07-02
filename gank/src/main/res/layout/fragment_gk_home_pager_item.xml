@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.yang.gank.widget.GkCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginStart="@dimen/layout_margin_5dp"
+    android:layout_marginEnd="@dimen/layout_margin_5dp"
+    android:foreground="?android:attr/selectableItemBackground"
+    card_view:cardBackgroundColor="@color/white"
+    card_view:cardCornerRadius="@dimen/layout_margin_4dp"
+    card_view:cardUseCompatPadding="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/layout_margin_5dp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txv_title"
+            style="@style/TextViewStyle"
+            android:layout_width="0dp"
+            android:layout_marginEnd="@dimen/layout_margin_10dp"
+            android:ellipsize="end"
+            android:maxLines="3"
+            android:textSize="@dimen/text_size_16sp"
+            app:layout_constraintEnd_toStartOf="@id/banner"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.youth.banner.Banner
+            android:id="@+id/banner"
+            android:layout_width="@dimen/layout_margin_63dp"
+            android:layout_height="0dp"
+            android:background="@drawable/shape_top_bottom_bg"
+            app:banner_default_image="@drawable/common_empty_bg"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="H,9:16"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txv_name"
+            style="@style/TextViewStyle"
+            android:minWidth="@dimen/layout_margin_50dp"
+            android:textColor="@color/color_1a"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txv_time"
+            style="@style/TextViewStyle"
+            android:layout_marginStart="@dimen/layout_margin_10dp"
+            android:textColor="@color/color_99"
+            android:textSize="@dimen/text_size_12sp"
+            app:layout_constraintBottom_toBottomOf="@id/txv_name"
+            app:layout_constraintStart_toEndOf="@id/txv_name"
+            app:layout_constraintTop_toTopOf="@id/txv_name" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.yang.gank.widget.GkCardView>

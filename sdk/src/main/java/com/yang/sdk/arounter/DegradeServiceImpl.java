@@ -19,8 +19,8 @@ public class DegradeServiceImpl implements DegradeService {
     public void onLost(Context context, Postcard postcard) {
         if (context != null && postcard.getGroup().equals("activity")) {
 //            Intent intent = new Intent(context, WebViewActivity.class);
-//            intent.putExtra(Constant.URL, Constant.GITHUB);
-//            intent.putExtra(Constant.TITLE, "github地址");
+//            intent.putExtra(Constants.URL, Constants.GITHUB);
+//            intent.putExtra(Constants.TITLE, "github地址");
 //            ActivityCompat.startActivity(context, intent, null);
         }
     }

@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">gank</string>
+    <!-- CoordinatorLayout Behavior -->
+    <string name="bottom_navigation_view_behavior">com.yang.gank.widget.BottomNavigationViewBehavior</string>
+    <!-- Main.底部导航 -->
+    <string name="info">资讯</string>
+    <string name="video">视讯</string>
+    <string name="news">闲读</string>
+    <string name="home">首页</string>
+    <!-- Home.Tabs -->
+    <string-array name="home_tabs">
+        <item name="tab_title_all">全部</item>
+        <item name="tab_title_android">Android</item>
+        <item name="tab_title_ios">IOS</item>
+        <item name="tab_title_res">拓展资源</item>
+        <item name="tab_title_front_end">前端</item>
+        <item name="tab_title_random">瞎推荐</item>
+        <item name="tab_title_app">App</item>
+    </string-array>
+</resources>

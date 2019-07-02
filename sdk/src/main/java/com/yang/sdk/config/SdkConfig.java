@@ -2,12 +2,12 @@ package com.yang.sdk.config;
 
 import android.app.Application;
 
-import com.alibaba.android.arouter.BuildConfig;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.blankj.utilcode.util.Utils;
 import com.hjq.toast.ToastUtils;
 import com.squareup.leakcanary.LeakCanary;
 import com.tencent.smtt.sdk.QbSdk;
+import com.yang.sdk.BuildConfig;
 import com.yang.sdk.callback.BaseLifecycleCallback;
 import com.yang.sdk.utils.LogUtils;
 

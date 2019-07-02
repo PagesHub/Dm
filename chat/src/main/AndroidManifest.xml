@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.yang.chat">
 
-    <application>
+    <application android:theme="@style/AppTheme">
         <activity android:name=".ChatMainActivity">
         </activity>
     </application>

@@ -2,10 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.yang.kotlin">
-
-    <application
-        android:name=".base.KotlinApp"
-        tools:replace="android:name">
+    <application>
         <activity android:name=".ui.KtMainActivity" />
     </application>
 

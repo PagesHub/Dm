@@ -1,6 +1,6 @@
 package com.yang.sdk.http.retrofit;
 
-import com.yang.sdk.constant.Constant;
+import com.yang.sdk.constant.Constants;
 import com.yang.sdk.utils.LogUtils;
 import com.yang.sdk.utils.NetworkUtils;
 import com.yang.sdk.utils.SdkUtils;
@@ -163,7 +163,7 @@ public class InterceptorUtils {
                         .removeHeader("Pragma")// 清除头信息，因为服务器如果不支持，会返回一些干扰信息，不清除下面无法生效
                         .build();
             } else {
-                int maxStale = Constant.TIME_CACHE;
+                int maxStale = Constants.TIME_CACHE;
                 LogUtils.dLog("addNetWorkInterceptor"+ "网络未连接，缓存时间为：" + maxStale);
                 response = response.newBuilder()
                         .addHeader("Cache-Control", "public, only-if-cached, max-stale=" + maxStale)
