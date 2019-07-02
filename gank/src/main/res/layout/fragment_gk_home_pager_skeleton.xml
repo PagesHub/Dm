@@ -15,52 +15,42 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/layout_margin_5dp">
+        android:padding="@dimen/layout_margin_10dp">
 
-        <androidx.appcompat.widget.AppCompatTextView
+        <View
             android:id="@+id/txv_title"
-            style="@style/TextViewStyle"
             android:layout_width="0dp"
+            android:layout_height="@dimen/layout_margin_50dp"
             android:layout_marginEnd="@dimen/layout_margin_10dp"
-            android:ellipsize="end"
-            android:minHeight="@dimen/layout_margin_40dp"
-            android:maxLines="3"
-            android:textSize="@dimen/text_size_16sp"
-            android:text="@string/empty_string"
             android:background="@color/color_f5"
             app:layout_constraintEnd_toStartOf="@id/banner"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.youth.banner.Banner
+        <View
             android:id="@+id/banner"
             android:layout_width="@dimen/layout_margin_63dp"
             android:layout_height="0dp"
             android:background="@color/color_f5"
-            app:banner_default_image="@drawable/common_empty_bg"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintDimensionRatio="H,9:16"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatTextView
+        <View
             android:id="@+id/txv_name"
-            style="@style/TextViewStyle"
-            android:minWidth="@dimen/layout_margin_50dp"
-            android:text="@string/empty_string"
+            android:layout_width="@dimen/layout_margin_50dp"
+            android:layout_height="@dimen/layout_margin_20dp"
             android:background="@color/color_f5"
             android:textColor="@color/color_1a"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatTextView
+        <View
             android:id="@+id/txv_time"
-            style="@style/TextViewStyle"
+            android:layout_width="@dimen/layout_margin_150dp"
+            android:layout_height="@dimen/layout_margin_20dp"
             android:layout_marginStart="@dimen/layout_margin_10dp"
-            android:textColor="@color/color_99"
-            android:textSize="@dimen/text_size_12sp"
-            android:minWidth="@dimen/layout_margin_150dp"
-            android:text="@string/empty_string"
             android:background="@color/color_f5"
             app:layout_constraintBottom_toBottomOf="@id/txv_name"
             app:layout_constraintStart_toEndOf="@id/txv_name"

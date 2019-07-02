@@ -3,6 +3,7 @@ package com.yang.gank.ui.home;
 import android.os.Bundle;
 import android.view.View;
 
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -35,8 +36,8 @@ public class GkHomePageFragment extends GankFragment implements HomePagerContrac
     DmRecyclerView mHPRcy;
     private HomePagerItemAdapter mAdapter;
     private String mCategory;
-    private int page = 1;
-    private RecyclerViewSkeletonScreen skeletonScreen;
+    private int mPage = 1;
+    private RecyclerViewSkeletonScreen mSkeletonScreen;
 
     /**
      * 初始化
@@ -52,6 +53,12 @@ public class GkHomePageFragment extends GankFragment implements HomePagerContrac
         return fragment;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        mPage = 1;
+        mPresenter.getGanHuo(mCategory, mPage);
+    }
 
     @Override
     protected int bindLayout() {
@@ -69,7 +76,6 @@ public class GkHomePageFragment extends GankFragment implements HomePagerContrac
         if ("IOS".equalsIgnoreCase(mCategory))
             mCategory = "iOS";
         initRcy();
-        mPresenter.getGanHuo(mCategory, page);
     }
 
     /**
@@ -82,11 +88,17 @@ public class GkHomePageFragment extends GankFragment implements HomePagerContrac
         mAdapter.setNotDoAnimationCount(Constants.PAGE_NUMBER);
         mHPRcy.setAdapter(mAdapter);
         mAdapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN);
-        mAdapter.setOnLoadMoreListener(() -> mPresenter.getGanHuo(mCategory, page), mHPRcy);
+        mAdapter.setOnLoadMoreListener(() -> mPresenter.getGanHuo(mCategory, mPage), mHPRcy);
 
-        skeletonScreen = Skeleton.bind(mHPRcy)
+        mSkeletonScreen = Skeleton.bind(mHPRcy)
                 .adapter(mAdapter)
                 .load(R.layout.fragment_gk_home_pager_skeleton)
+                .shimmer(true)      // whether show shimmer animation.                      default is true
+                .count(10)          // the recycler view item count.                        default is 10
+                .color(R.color.backgroundColor)       // the shimmer color.                                   default is #a2878787
+                .angle(20)          // the shimmer angle.                                   default is 20;
+                .duration(1000)     // the shimmer animation duration.                      default is 1000;
+                .frozen(false)      // whether frozen recyclerView during skeleton showing  default is true;
                 .show();
     }
 
@@ -97,10 +109,10 @@ public class GkHomePageFragment extends GankFragment implements HomePagerContrac
             mAdapter.loadMoreEnd();
             return;
         }
-        skeletonScreen.hide();
+        mSkeletonScreen.hide();
         mAdapter.addData(data);
         mAdapter.loadMoreComplete();
-        page++;
+        mPage++;
     }
 
     @Override

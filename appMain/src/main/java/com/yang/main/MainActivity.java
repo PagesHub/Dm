@@ -128,4 +128,10 @@ public class MainActivity extends MBaseActivity implements FabAnimator.FabAnimat
         mGpWrite.setVisibility(View.GONE);
         mGpTop.setVisibility(View.GONE);
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        initFabAnimator();
+    }
 }

@@ -29,7 +29,7 @@ public class LauncherActivity extends MBaseActivity {
     @Override
     protected void initView() {
         //start：起始数值,count：发射数量,initialDelay：延迟执行时间,period：发射周期时间,unit：时间单位 //倒计时完毕置为可点击状态
-        disposable = Flowable.intervalRange(0, 4, 0, 1, TimeUnit.SECONDS)
+        disposable = Flowable.intervalRange(0, 3, 0, 1, TimeUnit.SECONDS)
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnNext(aLong -> txvNumber.setText(String.valueOf(3- aLong))).doOnComplete(() -> {
                     if (false)

@@ -1,6 +1,8 @@
 package com.yang.gank.ui.home;
 
 
+import android.view.View;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
@@ -83,6 +85,11 @@ public class GkHomeFragment extends GankFragment implements HomeContract.View {
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
                 super.onPageScrolled(position, positionOffset, positionOffsetPixels);
                 mHomeTab.setScrollPosition(position, positionOffset, false);
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
                 Objects.requireNonNull(mHomeTab.getTabAt(position)).select();
             }
         });
