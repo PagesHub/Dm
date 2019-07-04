@@ -1,19 +1,28 @@
 package com.yang.kotlin.ui.home
 
+import android.content.Context
 import android.os.Bundle
+import android.util.DisplayMetrics
+import android.view.WindowManager
+import android.widget.LinearLayout
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.yang.kotlin.R
 import com.yang.kotlin.base.KotlinFragment
+import com.yang.kotlin.model.bean.ArticleListModel
 import com.yang.kotlin.model.bean.BannerModel
 import com.yang.kotlin.ui.adpater.HomeArticleAdapter
+import com.yang.kotlin.weight.SpaceItemDecoration
 import com.yang.sdk.constant.Constants
 import com.yang.sdk.loader.BannerImageLoader
+import com.yang.sdk.utils.DisplayUtils
 import com.yang.sdk.web.WebActivity
+import com.yang.sdk.weight.RecycleViewDivider
 import com.youth.banner.Banner
 import com.youth.banner.BannerConfig
 import com.zhangyue.we.x2c.ano.Xml
 import kotlinx.android.synthetic.main.fragment_kt_home.*
+
 
 /**
  * Describe: java文件说明
@@ -25,8 +34,9 @@ class KtHomeFragment : KotlinFragment<KtHomeViewModule>() {
     override fun providerVMClass(): Class<KtHomeViewModule>? = KtHomeViewModule::class.java
 
     private val mBannerData = mutableListOf<BannerModel>()
-    private val mBanner by lazy { Banner(mContext) }
     private val mAdapter by lazy { HomeArticleAdapter() }
+    private val mBanner by lazy { Banner(mContext) }
+    private var mPage = 0
 
     override fun bindLayout(): Int {
         return R.layout.fragment_kt_home
@@ -35,7 +45,13 @@ class KtHomeFragment : KotlinFragment<KtHomeViewModule>() {
     override fun initView() {
         intRecyclerView()
         initBanner()
+        homeSrl.run {
+            setOnRefreshListener { refresh() }
+            isRefreshing = true
+        }
+
         mViewModel.getBanners()
+        mViewModel.getArticleList(mPage)
     }
 
     /**
@@ -46,11 +62,12 @@ class KtHomeFragment : KotlinFragment<KtHomeViewModule>() {
             setOnItemClickListener { _, _, position ->
                 goToWeb(mAdapter.data[position].link, mAdapter.data[position].title)
             }
+            setOnLoadMoreListener({ mViewModel.getArticleList(mPage) }, homeRv)
             addHeaderView(mBanner)
-            setOnLoadMoreListener({}, homeRv)
         }
         homeRv.run {
             layoutManager = LinearLayoutManager(mContext)
+            addItemDecoration(RecycleViewDivider(mContext, LinearLayoutManager.VERTICAL, 5, R.color.color_f5, true))
             adapter = mAdapter
         }
     }
@@ -59,14 +76,21 @@ class KtHomeFragment : KotlinFragment<KtHomeViewModule>() {
      * 初始化首页Banner
      */
     private fun initBanner() {
+        val wm: WindowManager = mContext.getSystemService(Context.WINDOW_SERVICE) as WindowManager
+        val dm = DisplayMetrics()
+        wm.defaultDisplay.getMetrics(dm)
+        val height = dm.widthPixels * (9f / 16f)
         mBanner.run {
-            // layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, DisplayUtils.dp2px(mContext, 230f))
-            setBannerStyle(BannerConfig.NUM_INDICATOR_TITLE)
+            layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, height.toInt())
+            setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE)
+            setIndicatorGravity(BannerConfig.RIGHT)
+            setDelayTime(3000)
             setImageLoader(BannerImageLoader())
             setOnBannerListener { position ->
                 goToWeb(mBannerData[position].url, mBannerData[position].title)
             }
         }
+        mAdapter.addHeaderView(view)
     }
 
     /**
@@ -84,20 +108,58 @@ class KtHomeFragment : KotlinFragment<KtHomeViewModule>() {
             mBanners.observe(this@KtHomeFragment, Observer { it ->
                 it?.let { setBanner(it) }
             })
+            mArticleList.observe(this@KtHomeFragment, Observer { it ->
+                it?.let { setArticles(it) }
+            })
         }
     }
 
+    private fun refresh() {
+        mAdapter.setEnableLoadMore(false)
+        homeSrl.isRefreshing = true
+        mPage = 0
+        mViewModel.getArticleList(mPage)
+    }
+
+    /**
+     * 设置列表数据
+     */
+    private fun setArticles(articleListModel: ArticleListModel) {
+        mAdapter.run {
+            if (homeSrl.isRefreshing) replaceData(articleListModel.datas)
+            else
+                addData(articleListModel.datas)
+            setEnableLoadMore(true)
+            loadMoreComplete()
+        }
+        homeSrl.isRefreshing = false
+        mPage++
+    }
+
+    /**
+     * 设置Banner
+     */
     private fun setBanner(bannerList: List<BannerModel>) {
-//        for (banner in bannerList) {
-//            bannerImages.add(banner.imagePath)
-//            bannerTitles.add(banner.title)
-//            bannerUrls.add(banner.url)
-//        }
-//        mBanner.setImages(bannerImages)
-//                .setBannerTitles(bannerTitles)
-//                .setBannerStyle(BannerConfig.NUM_INDICATOR_TITLE)
-//                .setDelayTime(3000)
-//        banner.start()
+        mBannerData.addAll(bannerList)
+        val bannerImages = mutableListOf<String>()
+        val bannerTitles = mutableListOf<String>()
+        for (bannerModel in mBannerData) {
+            bannerImages.add(bannerModel.imagePath)
+            bannerTitles.add(bannerModel.title)
+        }
+        mBanner.setImages(bannerImages)
+                .setBannerTitles(bannerTitles)
+        mBanner.start()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        mBanner.startAutoPlay()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        mBanner.stopAutoPlay()
     }
 }
 

@@ -7,5 +7,5 @@ import com.yang.sdk.http.retrofit.RetrofitWrapper
  * Created by Yang on 2019/7/3  17:49
  */
 object RetrofitClient {
-    val service by lazy { RetrofitWrapper.getInstance(WAService.BASE_URL).create(WAService::class.java) }
+    val service: WAService by lazy { RetrofitWrapper.getInstance(WAService.BASE_URL).create(WAService::class.java) }
 }

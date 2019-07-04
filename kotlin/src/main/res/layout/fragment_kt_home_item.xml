@@ -1,29 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:padding="@dimen/layout_margin_10dp">
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/txv_title"
-        style="@style/TabTextStyle"
+        android:id="@+id/txv_author"
+        style="@style/TextViewStyle"
+        android:textColor="@color/color_99"
+        android:textSize="@dimen/text_size_13sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.yang.sdk.weight.CircleImageView
-        android:id="@+id/imv_avatar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:is_circle="true"
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txv_chapter"
+        style="@style/TextViewStyle"
+        android:layout_marginStart="@dimen/layout_margin_15dp"
+        android:textColor="@color/color_99"
+        android:textSize="@dimen/text_size_13sp"
+        app:layout_constraintStart_toEndOf="@id/txv_author"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txv_title"
+        style="@style/TextViewStyle"
+        android:gravity="start"
+        android:minLines="2"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:textSize="@dimen/text_size_15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txv_author" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txv_time"
+        style="@style/TextViewStyle"
+        android:textColor="@color/color_99"
+        android:textSize="@dimen/text_size_13sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/txv_title" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/txv_author"
-        style="@style/TabTextStyle"
-        app:layout_constraintStart_toEndOf="@id/imv_avatar"
-        app:layout_constraintTop_toBottomOf="@id/txv_title" />
-
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/layout_margin_15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/txv_time" />
 </androidx.constraintlayout.widget.ConstraintLayout>

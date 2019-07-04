@@ -6,7 +6,7 @@ package com.yang.kotlin.model.bean
  */
 data class ArticleListModel(
         val curPage: Int,
-        val datas: List<Article>,
+        val datas: List<ArticleModel>,
         val offset: Int,
         val over: Boolean,
         val pageCount: Int,

@@ -1,7 +1,9 @@
 package com.yang.kotlin.ui.system
 
+import androidx.lifecycle.Observer
 import com.yang.kotlin.R
 import com.yang.kotlin.base.KotlinFragment
+import com.yang.kotlin.model.bean.SystemModel
 import com.zhangyue.we.x2c.ano.Xml
 
 /**
@@ -14,11 +16,25 @@ class KtSystemFragment : KotlinFragment<KtSystemViewModule>() {
 
 
     override fun bindLayout(): Int {
-
         return R.layout.fragment_kt_system
     }
 
     override fun initView() {
+        mViewModel.getSystemTree()
     }
 
+    override fun startObserve() {
+        mViewModel.run {
+            mSystemModelList.observe(this@KtSystemFragment, Observer { it ->
+                it?.let {
+                    setSystemTree(it)
+                }
+            })
+        }
+    }
+
+    private fun setSystemTree(it: List<SystemModel>) {
+
+    }
 }
+
