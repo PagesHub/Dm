@@ -7,6 +7,7 @@ import android.view.WindowManager
 import android.widget.LinearLayout
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.chad.library.adapter.base.BaseQuickAdapter
 import com.yang.kotlin.R
 import com.yang.kotlin.base.KotlinFragment
 import com.yang.kotlin.model.bean.ArticleListModel
@@ -63,11 +64,13 @@ class KtHomeFragment : KotlinFragment<KtHomeViewModule>() {
                 goToWeb(mAdapter.data[position].link, mAdapter.data[position].title)
             }
             setOnLoadMoreListener({ mViewModel.getArticleList(mPage) }, homeRv)
+            openLoadAnimation()
+            setNotDoAnimationCount(Constants.PAGE_NUMBER * 2)
+            openLoadAnimation(BaseQuickAdapter.ALPHAIN)
             addHeaderView(mBanner)
         }
         homeRv.run {
             layoutManager = LinearLayoutManager(mContext)
-            addItemDecoration(RecycleViewDivider(mContext, LinearLayoutManager.VERTICAL, 5, R.color.color_f5, true))
             adapter = mAdapter
         }
     }
@@ -90,7 +93,6 @@ class KtHomeFragment : KotlinFragment<KtHomeViewModule>() {
                 goToWeb(mBannerData[position].url, mBannerData[position].title)
             }
         }
-        mAdapter.addHeaderView(view)
     }
 
     /**

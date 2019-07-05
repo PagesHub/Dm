@@ -1,5 +1,7 @@
 package com.yang.kotlin.model.bean
 
+import java.io.Serializable
+
 /**
  * Describe: java文件说明
  * Created by Yang on 2019/7/4  16:58
@@ -14,4 +16,4 @@ data class SystemModel(
         val parentChapterId: Int,
         val userControlSetTop: Boolean,
         val visible: Int
-)
+) : Serializable

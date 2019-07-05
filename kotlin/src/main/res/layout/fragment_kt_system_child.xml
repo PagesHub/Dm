@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/homeSrl"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.home.KtHomeFragment">
+    android:layout_height="match_parent">
+
 
     <com.yang.sdk.weight.DmRecyclerView
-        android:id="@+id/homeRv"
+        android:id="@+id/systemChildRcy"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+    <TextView
+        android:id="@+id/txvName"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_99"/>
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

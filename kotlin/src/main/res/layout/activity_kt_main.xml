@@ -10,32 +10,37 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.google.android.material.tabs.TabLayout
+        <com.androidkun.xtablayout.XTabLayout
             android:id="@+id/tabLayout"
             android:layout_width="0dp"
             android:layout_height="@dimen/layout_margin_45dp"
-            android:background="@color/theme"
+            android:background="@color/kt_theme"
             app:layout_constraintEnd_toStartOf="@id/btn_search"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tabIndicatorColor="@color/white"
-            app:tabIndicatorHeight="@dimen/layout_margin_1dp"
-            app:tabRippleColor="@color/colorTransparent"
-            app:tabTextAppearance="@style/TabTextStyle"
-            app:xTabMode="scrollable" />
+            app:xTabBackgroundColor="@color/kt_theme"
+            app:xTabDividerWidthWidthText="true"
+            app:xTabIndicatorColor="@color/white"
+            app:xTabIndicatorHeight="@dimen/layout_margin_1dp"
+            app:xTabMode="scrollable"
+            app:xTabSelectedBackgroundColor="@color/kt_theme"
+            app:xTabSelectedTextColor="@color/white"
+            app:xTabSelectedTextSize="@dimen/text_size_15sp"
+            app:xTabTextColor="@color/color_bb"
+            app:xTabTextSize="@dimen/text_size_15sp" />
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/btn_search"
             android:layout_width="@dimen/layout_margin_45dp"
             android:layout_height="@dimen/layout_margin_45dp"
-            android:background="@color/theme"
+            android:background="@color/kt_theme"
             android:padding="@dimen/layout_margin_10dp"
             android:src="@drawable/search"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/viewPager2"
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewPager"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:overScrollMode="never"

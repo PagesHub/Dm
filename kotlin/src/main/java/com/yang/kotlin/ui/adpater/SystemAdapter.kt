@@ -12,7 +12,7 @@ import com.yang.kotlin.model.bean.SystemModel
 class SystemAdapter(layoutResId: Int = R.layout.fragment_kt_system_item) : BaseQuickAdapter<SystemModel, BaseViewHolder>(layoutResId) {
     override fun convert(helper: BaseViewHolder, item: SystemModel) {
         helper.setText(R.id.systemParent, item.name)
-                .setText(R.id.systemChild, item.children.joinToString("   ", transform = { systemChildModel ->
+                .setText(R.id.systemChild, item.children.joinToString("      ", transform = { systemChildModel ->
                     systemChildModel.name
                 }))
     }

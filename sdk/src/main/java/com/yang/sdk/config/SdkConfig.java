@@ -48,12 +48,10 @@ public enum SdkConfig {
             QbSdk.preInit(mApplication, new QbSdk.PreInitCallback() {
                 @Override
                 public void onCoreInitFinished() {
-                    LogUtils.eLog("onCoreInitFinished");
                 }
 
                 @Override
                 public void onViewInitFinished(boolean b) {
-                    LogUtils.eLog("onViewInitFinished");
                 }
             });
         }

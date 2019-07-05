@@ -7,14 +7,14 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:padding="10dp">
+        android:paddingBottom="@dimen/sp_16"
+        android:padding="@dimen/layout_margin_10dp">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/systemParent"
             style="@style/TextViewStyle"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="@dimen/text_size_16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -22,8 +22,8 @@
             android:id="@+id/systemChild"
             style="@style/TextViewStyle"
             android:layout_marginTop="5dp"
-            android:textColor="@color/color_32"
-            android:textSize="12sp"
+            android:textColor="@color/color_5e"
+            android:textSize="@dimen/text_size_14sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/systemParent" />
 

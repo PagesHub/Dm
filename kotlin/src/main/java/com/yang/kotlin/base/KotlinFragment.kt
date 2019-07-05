@@ -17,7 +17,6 @@ abstract class KotlinFragment<VM : KotlinViewModule> : BaseFragment() {
         initVM()
         startObserve()
         super.onViewCreated(view, savedInstanceState)
-
     }
 
     open fun startObserve() {}

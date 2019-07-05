@@ -2,6 +2,7 @@ package com.yang.sdk.weight;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RestrictTo;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
@@ -10,6 +11,7 @@ import com.google.android.material.tabs.TabLayout;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Method;
 
+import static androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP;
 import static androidx.viewpager2.widget.ViewPager2.SCROLL_STATE_DRAGGING;
 import static androidx.viewpager2.widget.ViewPager2.SCROLL_STATE_IDLE;
 import static androidx.viewpager2.widget.ViewPager2.SCROLL_STATE_SETTLING;
@@ -19,6 +21,7 @@ import static androidx.viewpager2.widget.ViewPager2.SCROLL_STATE_SETTLING;
  * Description    TabLayout和ViewPager2协调器
  * CreateDate     2019/5/17 10:55
  */
+@RestrictTo(LIBRARY_GROUP)
 public final class TabLayoutMediator {
     private final @NonNull
     TabLayout mTabLayout;

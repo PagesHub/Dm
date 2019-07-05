@@ -1,7 +1,6 @@
 package com.yang.gank.ui.home;
 
 
-import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -93,5 +92,6 @@ public class GkHomeFragment extends GankFragment implements HomeContract.View {
                 Objects.requireNonNull(mHomeTab.getTabAt(position)).select();
             }
         });
+        mHomePager.setOffscreenPageLimit(mFragments.size());
     }
 }
