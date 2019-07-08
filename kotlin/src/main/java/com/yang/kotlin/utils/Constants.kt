@@ -6,6 +6,10 @@ package com.yang.kotlin.utils
  */
 class Constants {
     companion object {
-        const val RX_SYSTEM_TYPE_INIT: Int = 101
+        const val PAGE_NUMBER = 10
+
+
+        const val RX_SYSTEM_TYPE_ATTACH: Int = 100101
+        const val RX_SYSTEM_TYPE_DETACH: Int = 100102
     }
 }

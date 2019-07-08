@@ -30,7 +30,7 @@ class KtMainActivity : KotlinActivity<KtMainViewModule>() {
 
     private lateinit var mTabRes: Array<String>
     private val mFragments = arrayListOf<Fragment>()
-    private lateinit var mSystemTypeFragment: KtSystemTypeFragment
+    private var mSystemTypeFragment: KtSystemTypeFragment? = null
 
     override fun bindLayout(): Int {
         return R.layout.activity_kt_main
@@ -45,8 +45,10 @@ class KtMainActivity : KotlinActivity<KtMainViewModule>() {
 
     private fun initRxBus() {
         RxBus.getInstanceBus().doSubscribe(RxBusMessage::class.java) {
-            if (it.code == Constants.RX_SYSTEM_TYPE_INIT) {
-                initTypeFragment(it.`object` as SystemModel)
+            if (it.code == Constants.RX_SYSTEM_TYPE_ATTACH) {
+                attachTypeFragment(it.`object` as SystemModel)
+            } else if (it.code == Constants.RX_SYSTEM_TYPE_DETACH) {
+                detachTypeFragment()
             }
         }
     }
@@ -74,13 +76,34 @@ class KtMainActivity : KotlinActivity<KtMainViewModule>() {
         tabLayout.setupWithViewPager(viewPager)
     }
 
-    private fun initTypeFragment(systemModel: SystemModel) {
+    /**
+     * 添加列表fragment
+     */
+    private fun attachTypeFragment(systemModel: SystemModel) {
         mSystemTypeFragment = KtSystemTypeFragment(systemModel)
         supportFragmentManager.beginTransaction().run {
-            add(android.R.id.content, mSystemTypeFragment)
+            add(android.R.id.content, mSystemTypeFragment!!)
             setCustomAnimations(R.anim.pager_enter_animation, R.anim.pager_exit_animation)
             commitAllowingStateLoss()
         }
     }
 
+    /**
+     * 移除列表fragment
+     */
+
+    private fun detachTypeFragment() {
+        supportFragmentManager.beginTransaction().run {
+            remove(mSystemTypeFragment!!)
+            commitAllowingStateLoss()
+            mSystemTypeFragment = null
+        }
+    }
+
+    override fun onBackPressed() {
+        if (mSystemTypeFragment != null) {
+            detachTypeFragment()
+        } else
+            super.onBackPressed()
+    }
 }

@@ -1,15 +1,16 @@
 package com.yang.kotlin.ui.system
 
-import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.google.android.material.tabs.TabLayout
+import androidx.fragment.app.FragmentStatePagerAdapter
 import com.yang.kotlin.R
 import com.yang.kotlin.base.KotlinFragment
 import com.yang.kotlin.model.bean.SystemModel
+import com.yang.kotlin.utils.Constants
 import com.yang.sdk.utils.rxUtils.RxBus
-import com.yang.sdk.weight.TabLayoutMediator
 import com.zhangyue.we.x2c.ano.Xml
 import kotlinx.android.synthetic.main.fragment_kt_system_type.*
 import kotlinx.android.synthetic.main.fragment_kt_system_type.tabLayout
+import kotlinx.android.synthetic.main.fragment_kt_system_type.viewPager
+
 
 /**
  * Describe: java文件说明
@@ -30,15 +31,15 @@ class KtSystemTypeFragment(systemModel: SystemModel) : KotlinFragment<KtSystemTy
         mToolbar.run {
             title = mSystemModel.name
             setNavigationOnClickListener {
-                RxBus.getInstanceBus().post(1,2)
+                RxBus.getInstanceBus().post(Constants.RX_SYSTEM_TYPE_DETACH, null)
             }
         }
-        viewPager2.adapter = object : FragmentStateAdapter(childFragmentManager, lifecycle) {
-            override fun getItemCount() = mSystemModel.children.size
-            override fun createFragment(position: Int) = KtSystemChildFragment(mSystemModel.children[position])
+        viewPager.adapter = object : FragmentStatePagerAdapter(childFragmentManager,BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
+            override fun getItem(position: Int) = KtSystemChildFragment(mSystemModel.children[position])
+            override fun getCount() = mSystemModel.children.size
+            override fun getPageTitle(position: Int) = mSystemModel.children[position].name
         }
-        TabLayoutMediator(tabLayout, viewPager2) { tab: TabLayout.Tab, position: Int ->
-            tab.text = mSystemModel.children[position].name
-        }.attach()
+        tabLayout.setupWithViewPager(viewPager)
     }
+
 }

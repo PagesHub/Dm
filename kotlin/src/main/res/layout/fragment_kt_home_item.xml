@@ -27,11 +27,14 @@
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/txv_title"
         style="@style/TextViewStyle"
+        android:layout_width="0dp"
+        android:layout_marginEnd="10dp"
         android:gravity="start"
         android:minLines="2"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
         android:textSize="@dimen/text_size_15sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/txv_author"
         app:layout_constraintTop_toBottomOf="@id/txv_author" />
 
@@ -53,8 +56,8 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="10dp"
-        android:background="@color/color_f5"
         android:layout_marginTop="@dimen/layout_margin_10dp"
+        android:background="@color/color_f5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/txv_time" />
 </androidx.constraintlayout.widget.ConstraintLayout>

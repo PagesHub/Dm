@@ -10,15 +10,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.yang.kotlin.R
 import com.yang.kotlin.base.KotlinFragment
-import com.yang.kotlin.model.bean.ArticleListModel
+import com.yang.kotlin.model.bean.BaseListModel
+import com.yang.kotlin.model.bean.ArticleModel
 import com.yang.kotlin.model.bean.BannerModel
 import com.yang.kotlin.ui.adpater.HomeArticleAdapter
-import com.yang.kotlin.weight.SpaceItemDecoration
 import com.yang.sdk.constant.Constants
 import com.yang.sdk.loader.BannerImageLoader
-import com.yang.sdk.utils.DisplayUtils
 import com.yang.sdk.web.WebActivity
-import com.yang.sdk.weight.RecycleViewDivider
 import com.youth.banner.Banner
 import com.youth.banner.BannerConfig
 import com.zhangyue.we.x2c.ano.Xml
@@ -110,7 +108,7 @@ class KtHomeFragment : KotlinFragment<KtHomeViewModule>() {
             mBanners.observe(this@KtHomeFragment, Observer { it ->
                 it?.let { setBanner(it) }
             })
-            mArticleList.observe(this@KtHomeFragment, Observer { it ->
+            mArticleListModel.observe(this@KtHomeFragment, Observer { it ->
                 it?.let { setArticles(it) }
             })
         }
@@ -126,7 +124,7 @@ class KtHomeFragment : KotlinFragment<KtHomeViewModule>() {
     /**
      * 设置列表数据
      */
-    private fun setArticles(articleListModel: ArticleListModel) {
+    private fun setArticles(articleListModel: BaseListModel<ArticleModel>) {
         mAdapter.run {
             if (homeSrl.isRefreshing) replaceData(articleListModel.datas)
             else

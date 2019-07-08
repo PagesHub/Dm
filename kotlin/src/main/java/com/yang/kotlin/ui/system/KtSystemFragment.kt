@@ -1,6 +1,5 @@
 package com.yang.kotlin.ui.system
 
-import android.view.View.GONE
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -54,21 +53,7 @@ class KtSystemFragment : KotlinFragment<KtSystemViewModule>() {
         systemSrl.isRefreshing = false
         mAdapter.setNewData(it)
         mAdapter.setOnItemClickListener { _, _, position ->
-           // initTypeFragment(mAdapter.data[position])
-            RxBus.getInstanceBus().post(Constants.RX_SYSTEM_TYPE,mAdapter.data[position])
-        }
-    }
-
-    /**
-     * 初始化体系类别Fragment
-     */
-    private fun initTypeFragment(systemModel: SystemModel) {
-        mFragment = KtSystemTypeFragment(systemModel)
-        childFragmentManager.beginTransaction().run {
-            setCustomAnimations(R.anim.pager_enter_animation, R.anim.pager_exit_animation)
-            add(R.id.frameLayout, mFragment)
-            commitAllowingStateLoss()
-            systemRcy.visibility = GONE
+            RxBus.getInstanceBus().post(Constants.RX_SYSTEM_TYPE_ATTACH, mAdapter.data[position])
         }
     }
 }
