@@ -1,5 +1,6 @@
 package com.yang.kotlin.ui.project
 
+import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.yang.kotlin.R
@@ -10,8 +11,13 @@ import com.yang.kotlin.model.bean.ProjectTypeModel
 import com.yang.kotlin.ui.adpater.ProjectAdapter
 import com.yang.kotlin.ui.adpater.ProjectTypeAdapter
 import com.yang.kotlin.weight.SpaceItemDecoration
+import com.yang.sdk.constant.Constants
+import com.yang.sdk.utils.DisplayUtils
+import com.yang.sdk.web.WebActivity
+import com.yang.sdk.weight.RecycleViewDivider
 import com.zhangyue.we.x2c.ano.Xml
 import kotlinx.android.synthetic.main.fragment_kt_project.*
+import kotlinx.android.synthetic.main.fragment_kt_system_child.*
 
 /**
  * Describe: java文件说明
@@ -23,7 +29,8 @@ class KtProjectFragment : KotlinFragment<KtProjectViewModule>() {
 
     private val mTypeAdapter: ProjectTypeAdapter by lazy { ProjectTypeAdapter() }
     private val mAdapter: ProjectAdapter by lazy { ProjectAdapter() }
-    private var mPage=0
+    private var mPage = 0
+    private var mCid = 0
 
 
     override fun bindLayout(): Int {
@@ -33,6 +40,11 @@ class KtProjectFragment : KotlinFragment<KtProjectViewModule>() {
     override fun initView() {
         initTypeRcy()
         initProjectRcy()
+
+        projectSrl.run {
+            setOnRefreshListener { refresh() }
+            isRefreshing = true
+        }
         mViewModel.getProjectType()
     }
 
@@ -45,7 +57,10 @@ class KtProjectFragment : KotlinFragment<KtProjectViewModule>() {
             adapter = mTypeAdapter
         }
         mTypeAdapter.run {
-            setOnItemClickListener { adapter, view, position ->
+            setOnItemClickListener { _, _, position ->
+                mCid = mTypeAdapter.getItem(position)!!.id
+                mTypeAdapter.setPosition(position)
+                refresh()
             }
         }
     }
@@ -56,12 +71,15 @@ class KtProjectFragment : KotlinFragment<KtProjectViewModule>() {
     private fun initProjectRcy() {
         projectRcy.run {
             layoutManager = LinearLayoutManager(mContext)
+            addItemDecoration(RecycleViewDivider(mContext, LinearLayoutManager.VERTICAL))
             adapter = mAdapter
 
         }
         mAdapter.run {
-            setOnItemClickListener { adapter, view, position ->
+            setOnItemClickListener { _, _, position ->
+                goToWeb(mAdapter.data[position].link, mAdapter.data[position].title)
             }
+            setOnLoadMoreListener({ mViewModel.getProjectList(mPage, mCid) }, projectRcy)
         }
     }
 
@@ -80,13 +98,32 @@ class KtProjectFragment : KotlinFragment<KtProjectViewModule>() {
         }
     }
 
+    private fun refresh() {
+        mAdapter.setEnableLoadMore(false)
+        projectSrl.isRefreshing = true
+        mPage = 0
+        mViewModel.getProjectList(mPage, mCid)
+
+    }
+
+    /**
+     * 跳转到WebActivity
+     */
+    private fun goToWeb(url: String, title: String) {
+        val bundle = Bundle()
+        bundle.putString(Constants.WEB_URL, url)
+        bundle.putString(Constants.WEB_TITLE, title)
+        readyGo(WebActivity::class.java, bundle)
+    }
+
     /**
      * 设置化项目分类列表
      */
     private fun initTypeList(it: List<ProjectTypeModel>) {
         mTypeAdapter.run {
             setNewData(it)
-            mViewModel.getProjectList(mPage,it[0].id)
+            mCid = it[0].id
+            mViewModel.getProjectList(mPage, mCid)
         }
     }
 
@@ -95,7 +132,16 @@ class KtProjectFragment : KotlinFragment<KtProjectViewModule>() {
      */
     private fun initProjectList(it: BaseListModel<ProjectModel>) {
         mAdapter.run {
-            setNewData(it.datas)
+            if (it.curPage > it.pageCount) {
+                loadMoreEnd(true)
+                return
+            }
+            if (projectSrl.isRefreshing) replaceData(it.datas)
+            else addData(it.datas)
+            setEnableLoadMore(true)
+            loadMoreComplete()
         }
+        projectSrl.isRefreshing = false
+        mPage++
     }
 }

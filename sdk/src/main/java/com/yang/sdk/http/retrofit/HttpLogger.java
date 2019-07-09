@@ -4,10 +4,11 @@ package com.yang.sdk.http.retrofit;
 import com.yang.sdk.utils.LogUtils;
 
 import androidx.annotation.NonNull;
+
 import okhttp3.logging.HttpLoggingInterceptor;
 
 
-public class HttpLogger implements HttpLoggingInterceptor.Logger{
+public class HttpLogger implements HttpLoggingInterceptor.Logger {
 
     private StringBuilder mMessage = new StringBuilder();
 
@@ -22,7 +23,11 @@ public class HttpLogger implements HttpLoggingInterceptor.Logger{
                 || (message.startsWith("[") && message.endsWith("]"))) {
             message = formatJson(decodeUnicode(message));
         }
-        mMessage.append(message.concat("\n"));
+        try {
+            mMessage.append(message.concat("\n"));
+        } catch (Exception e) {
+            LogUtils.dLog(e.getMessage());
+        }
         // 响应结束，打印整条日志
         if (message.startsWith("<-- END HTTP")) {
             LogUtils.dLog(mMessage.toString());

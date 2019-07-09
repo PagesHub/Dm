@@ -4,14 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".ui.project.KtProjectFragment"
-    android:background="@drawable/shape_bottom_f5">
+    tools:context=".ui.project.KtProjectFragment">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/txv_tab"
+        style="@style/TextViewStyle"
         android:layout_width="match_parent"
         android:layout_height="@dimen/layout_margin_45dp"
+        android:background="@drawable/select_project_type_bg"
         android:gravity="center"
+        android:textColor="@drawable/select_project_type_tc"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

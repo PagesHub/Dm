@@ -13,10 +13,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintWidth_percent="0.25" />
 
-    <com.yang.sdk.weight.DmRecyclerView
-        android:id="@+id/projectRcy"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/projectSrl"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/projectTypeRcy" />
+        app:layout_constraintStart_toEndOf="@id/projectTypeRcy">
+
+        <com.yang.sdk.weight.DmRecyclerView
+            android:id="@+id/projectRcy"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

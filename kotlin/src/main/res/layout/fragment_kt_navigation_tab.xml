@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.AppCompatTextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/txv_title"
+    style="@style/TextViewStyle"
+    android:textSize="@dimen/text_size_13sp"
+    android:layout_margin="@dimen/layout_margin_5dp"
+    android:background="@drawable/select_navigation_tab_bg"
+    android:paddingStart="@dimen/layout_margin_8dp"
+    android:paddingTop="@dimen/layout_margin_3dp"
+    android:paddingEnd="@dimen/layout_margin_8dp"
+    android:paddingBottom="@dimen/layout_margin_3dp"
+    android:textColor="@drawable/select_navigation_tab_tc" />
+

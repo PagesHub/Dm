@@ -40,4 +40,8 @@ interface WAService {
     @GET("/project/list/{page}/json")
     suspend fun getProjectList(@Path("page") page: Int, @Query("cid") cid: Int): KotlinResponse<BaseListModel<ProjectModel>>
 
+    //导航数据
+    @GET("/navi/json")
+    suspend fun getNavigation(): KotlinResponse<List<NavigationModel>>
+
 }
