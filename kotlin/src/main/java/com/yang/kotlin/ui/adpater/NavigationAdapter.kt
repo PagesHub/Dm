@@ -19,6 +19,8 @@ import com.zhy.view.flowlayout.TagFlowLayout
  * Created by Yang on 2019/7/9  11:36
  */
 class NavigationAdapter(layoutResId: Int = R.layout.fragment_kt_navigation_item) : BaseQuickAdapter<NavigationModel, BaseViewHolder>(layoutResId) {
+    private lateinit var mOnTabClickListener: OnTabClickListener
+
     override fun convert(helper: BaseViewHolder, item: NavigationModel) {
         helper.setText(R.id.txv_title, item.name)
         helper.getView<TagFlowLayout>(R.id.tagLayout).run {
@@ -33,10 +35,18 @@ class NavigationAdapter(layoutResId: Int = R.layout.fragment_kt_navigation_item)
                     return item.articles.size
                 }
             }
-//            setOnTagClickListener { view, position, parent ->
-//
-//
-//            }
+            setOnTagClickListener { _, position, _ ->
+                mOnTabClickListener.onTabClick(item.articles[position])
+                true
+            }
         }
+    }
+
+    fun setOnTabClickListener(onTabClickListener: OnTabClickListener) {
+        this.mOnTabClickListener = onTabClickListener
+    }
+
+    interface OnTabClickListener {
+        fun onTabClick(articleModel: ArticleModel)
     }
 }

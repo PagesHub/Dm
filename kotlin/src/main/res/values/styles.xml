@@ -3,4 +3,12 @@
     <style name="TabTextStyle" parent="TextAppearance.Design.Tab">
         <item name="textAllCaps">false</item>
     </style>
+
+    <style name="SearchViewStyle" parent="Base.Widget.AppCompat.SearchView">
+        <item name="defaultQueryHint">@string/search_menu</item>
+        <item name="searchIcon">@drawable/search</item>
+        <item name="searchHintIcon">@null</item>
+        <item name="closeIcon">@drawable/close</item>
+        <item name="queryBackground">?attr/colorPrimary</item>
+    </style>
 </resources>

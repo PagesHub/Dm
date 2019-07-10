@@ -11,5 +11,8 @@ class Constants {
 
         const val RX_SYSTEM_TYPE_ATTACH: Int = 100101
         const val RX_SYSTEM_TYPE_DETACH: Int = 100102
+
+        const val RX_SEARCH_PAGE_ATTACH: Int = 100103
+        const val RX_SEARCH_PAGE_DETACH: Int = 100104
     }
 }

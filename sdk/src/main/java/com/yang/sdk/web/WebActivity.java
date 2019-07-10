@@ -3,6 +3,9 @@ package com.yang.sdk.web;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Html;
+import android.view.ViewGroup;
+import android.view.ViewParent;
 
 import com.yang.sdk.R;
 import com.yang.sdk.constant.Constants;
@@ -27,7 +30,7 @@ public class WebActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        setToolbarTitle(mTitle, R.menu.web_menu, true);
+        setToolbarTitle(Html.fromHtml(mTitle).toString(), R.menu.web_menu, true);
         mWebView = getView(R.id.webView);
         if (mUrl != null && !mUrl.isEmpty()) {
             if (mUrl.startsWith("www"))
@@ -51,5 +54,25 @@ public class WebActivity extends BaseActivity {
      */
     private void doShare() {
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        if( mWebView!=null) {
+            // 如果先调用destroy()方法，则会命中if (isDestroyed()) return;    这一行代码，需要先onDetachedFromWindow()，再destory()
+            ViewParent parent = mWebView.getParent();
+            if (parent != null) {
+                ((ViewGroup) parent).removeView(mWebView);
+            }
+            mWebView.stopLoading();
+            // 退出时调用此方法，移除绑定的服务，否则某些特定系统会报错
+            mWebView.getSettings().setJavaScriptEnabled(false);
+            mWebView.clearHistory();
+            mWebView.clearView();
+            mWebView.removeAllViews();
+            mWebView.destroy();
+            mWebView=null;
+        }
+        super.onDestroy();
     }
 }

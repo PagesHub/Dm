@@ -3,6 +3,7 @@ package com.yang.kotlin.model.api
 import com.yang.kotlin.base.KotlinResponse
 import com.yang.kotlin.model.bean.*
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.Path
 import retrofit2.http.Query
 
@@ -44,4 +45,15 @@ interface WAService {
     @GET("/navi/json")
     suspend fun getNavigation(): KotlinResponse<List<NavigationModel>>
 
+    //搜索
+    @POST("/article/query/{page}/json")
+    suspend fun doQuery(@Path("page") page: Int, @Query("k") key: String): KotlinResponse<BaseListModel<ArticleModel>>
+
+    //搜索热词
+    @GET("/hotkey/json")
+    suspend fun getHotKey(): KotlinResponse<List<HotKeyModel>>
+
+    //常用网站
+    @GET("/friend/json")
+    suspend fun getFriend(): KotlinResponse<List<HotKeyModel>>
 }

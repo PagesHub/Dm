@@ -12,7 +12,7 @@
         android:id="@+id/txv_title"
         style="@style/TextViewStyle"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/layout_margin_40dp"
+        android:layout_height="@dimen/layout_margin_35dp"
         android:layout_marginStart="5dp"
         android:textSize="@dimen/text_size_16sp"
         app:layout_constraintTop_toTopOf="parent" />

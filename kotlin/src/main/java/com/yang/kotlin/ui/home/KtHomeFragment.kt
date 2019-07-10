@@ -46,7 +46,6 @@ class KtHomeFragment : KotlinFragment<KtHomeViewModule>() {
         initBanner()
         homeSrl.run {
             setOnRefreshListener { refresh() }
-            isRefreshing = true
         }
 
         mViewModel.getBanners()

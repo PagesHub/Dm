@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">kotlin</string>
+    <string name="search_menu">输入搜索关键字</string>
+    <string name="search_hot">搜索热词</string>
+    <string name="search_friend">常用网站</string>
 
     <string-array name="tab_title">
         <item>首页</item>

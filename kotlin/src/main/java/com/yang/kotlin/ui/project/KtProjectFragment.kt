@@ -43,7 +43,6 @@ class KtProjectFragment : KotlinFragment<KtProjectViewModule>() {
 
         projectSrl.run {
             setOnRefreshListener { refresh() }
-            isRefreshing = true
         }
         mViewModel.getProjectType()
     }

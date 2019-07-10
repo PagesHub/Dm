@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/mToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_scrollFlags="scroll|enterAlways"
+        app:navigationIcon="@drawable/common_back_white"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/mSearchView"
+            style="@style/SearchViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/searchSrl"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mToolbar">
+
+        <com.yang.sdk.weight.DmRecyclerView
+            android:id="@+id/searchRcy"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nsvTab"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mToolbar">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/layout_margin_10dp"
+            android:paddingEnd="@dimen/layout_margin_10dp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txvHot"
+                style="@style/TextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_margin_35dp"
+                android:layout_marginStart="5dp"
+                android:text="@string/search_hot"
+                app:layout_constraintTop_toTopOf="parent"
+                android:visibility="invisible"/>
+
+            <com.zhy.view.flowlayout.TagFlowLayout
+                android:id="@+id/tagLayoutHot"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/txvHot"
+                app:max_select="1" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txvFriend"
+                style="@style/TextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_margin_35dp"
+                android:layout_marginStart="5dp"
+                android:text="@string/search_friend"
+                app:layout_constraintTop_toBottomOf="@id/tagLayoutHot"
+                android:visibility="invisible"/>
+
+            <com.zhy.view.flowlayout.TagFlowLayout
+                android:id="@+id/tagLayoutFriend"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/txvFriend"
+                app:max_select="1" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

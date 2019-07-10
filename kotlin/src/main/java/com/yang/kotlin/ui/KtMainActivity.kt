@@ -9,6 +9,7 @@ import com.yang.kotlin.model.bean.SystemModel
 import com.yang.kotlin.ui.home.KtHomeFragment
 import com.yang.kotlin.ui.navigation.KtNavigationFragment
 import com.yang.kotlin.ui.project.KtProjectFragment
+import com.yang.kotlin.ui.search.KtSearchFragment
 import com.yang.kotlin.ui.system.KtSystemFragment
 import com.yang.kotlin.ui.system.KtSystemTypeFragment
 import com.yang.kotlin.utils.Constants
@@ -30,7 +31,7 @@ class KtMainActivity : KotlinActivity<KtMainViewModule>() {
 
     private lateinit var mTabRes: Array<String>
     private val mFragments = arrayListOf<Fragment>()
-    private var mSystemTypeFragment: KtSystemTypeFragment? = null
+    private var mFragment: Fragment? = null
 
     override fun bindLayout(): Int {
         return R.layout.activity_kt_main
@@ -38,6 +39,11 @@ class KtMainActivity : KotlinActivity<KtMainViewModule>() {
 
     override fun initView() {
         mTabRes = resources.getStringArray(R.array.tab_title)
+
+        btnSearch.setOnClickListener {
+            mFragment = KtSearchFragment()
+            attachFragment()
+        }
         initFragments()
         initViewPager()
         initRxBus()
@@ -45,13 +51,17 @@ class KtMainActivity : KotlinActivity<KtMainViewModule>() {
 
     private fun initRxBus() {
         RxBus.getInstanceBus().doSubscribe(RxBusMessage::class.java) {
-            if (it.code == Constants.RX_SYSTEM_TYPE_ATTACH) {
-                attachTypeFragment(it.`object` as SystemModel)
-            } else if (it.code == Constants.RX_SYSTEM_TYPE_DETACH) {
-                detachTypeFragment()
+            when (it.code) {
+                Constants.RX_SYSTEM_TYPE_ATTACH -> {
+                    mFragment = KtSystemTypeFragment(it.`object` as SystemModel)
+                    attachFragment()
+                }
+                Constants.RX_SYSTEM_TYPE_DETACH -> detachFragment()
+                Constants.RX_SEARCH_PAGE_DETACH -> detachFragment()
             }
         }
     }
+
 
     /**
      * 初始化Fragments
@@ -77,32 +87,31 @@ class KtMainActivity : KotlinActivity<KtMainViewModule>() {
     }
 
     /**
-     * 添加列表fragment
+     * 添加Fragment
      */
-    private fun attachTypeFragment(systemModel: SystemModel) {
-        mSystemTypeFragment = KtSystemTypeFragment(systemModel)
+    private fun attachFragment() {
         supportFragmentManager.beginTransaction().run {
-            add(android.R.id.content, mSystemTypeFragment!!)
+            add(android.R.id.content, mFragment!!)
             setCustomAnimations(R.anim.pager_enter_animation, R.anim.pager_exit_animation)
             commitAllowingStateLoss()
         }
     }
 
     /**
-     * 移除列表fragment
+     * 移除Fragment
      */
 
-    private fun detachTypeFragment() {
+    private fun detachFragment() {
         supportFragmentManager.beginTransaction().run {
-            remove(mSystemTypeFragment!!)
+            remove(mFragment!!)
             commitAllowingStateLoss()
-            mSystemTypeFragment = null
+            mFragment = null
         }
     }
 
     override fun onBackPressed() {
-        if (mSystemTypeFragment != null) {
-            detachTypeFragment()
+        if (mFragment != null) {
+            detachFragment()
         } else
             super.onBackPressed()
     }

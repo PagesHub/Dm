@@ -15,7 +15,7 @@
             android:layout_width="0dp"
             android:layout_height="@dimen/layout_margin_45dp"
             android:background="@color/kt_theme"
-            app:layout_constraintEnd_toStartOf="@id/btn_search"
+            app:layout_constraintEnd_toStartOf="@id/btnSearch"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:xTabBackgroundColor="@color/kt_theme"
@@ -30,7 +30,7 @@
             app:xTabTextSize="@dimen/text_size_15sp" />
 
         <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/btn_search"
+            android:id="@+id/btnSearch"
             android:layout_width="@dimen/layout_margin_45dp"
             android:layout_height="@dimen/layout_margin_45dp"
             android:background="@color/kt_theme"

@@ -6,8 +6,8 @@
     android:layout_margin="@dimen/layout_margin_5dp"
     android:background="@drawable/select_navigation_tab_bg"
     android:paddingStart="@dimen/layout_margin_8dp"
-    android:paddingTop="@dimen/layout_margin_3dp"
+    android:paddingTop="@dimen/layout_margin_4dp"
     android:paddingEnd="@dimen/layout_margin_8dp"
-    android:paddingBottom="@dimen/layout_margin_3dp"
+    android:paddingBottom="@dimen/layout_margin_4dp"
     android:textColor="@drawable/select_navigation_tab_tc" />
 

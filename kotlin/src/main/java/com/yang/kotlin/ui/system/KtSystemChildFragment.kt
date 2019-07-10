@@ -35,7 +35,6 @@ class KtSystemChildFragment(systemChildModel: SystemChildModel) : KotlinFragment
         initRcy()
         systemChildSrl.run {
             setOnRefreshListener { refresh() }
-            isRefreshing = true
         }
         mViewModel.getSystemChild(mPage, mSystemChildModel.id)
     }
