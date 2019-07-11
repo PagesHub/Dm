@@ -22,6 +22,7 @@ public class BannerImageLoader extends ImageLoader {
          切记不要胡乱强转！
          */
         //Glide 加载图片简单用法
+        imageView.setScaleType(ImageView.ScaleType.FIT_XY);
         GlideUtils.getInstance().glideLoad(context, path == null ? "" : path.toString(), imageView, R.drawable.shape_empty_bg);
     }
 }

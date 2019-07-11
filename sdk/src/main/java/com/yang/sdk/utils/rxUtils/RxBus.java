@@ -1,6 +1,7 @@
 package com.yang.sdk.utils.rxUtils;
 
 import java.util.HashMap;
+import java.util.Objects;
 
 import io.reactivex.Flowable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -105,7 +106,7 @@ public class RxBus {
         }
         String key = o.getClass().getName();
         if (mSubscriptionMap.get(key) != null) {
-            mSubscriptionMap.get(key).add(disposable);
+            Objects.requireNonNull(mSubscriptionMap.get(key)).add(disposable);
         } else {
             //一次性容器,可以持有多个并提供 添加和移除。
             CompositeDisposable disposables = new CompositeDisposable();
@@ -128,7 +129,7 @@ public class RxBus {
             return;
         }
         if (mSubscriptionMap.get(key) != null) {
-            mSubscriptionMap.get(key).dispose();
+            Objects.requireNonNull(mSubscriptionMap.get(key)).dispose();
         }
 
         mSubscriptionMap.remove(key);

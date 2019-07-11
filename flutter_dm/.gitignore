@@ -4,7 +4,7 @@
 .packages
 .pub/
 
-.idea/
+
 .vagrant/
 .sconsign.dblite
 .svn/
@@ -14,7 +14,6 @@ profile
 
 DerivedData/
 
-.generated/
 
 *.pbxuser
 *.mode1v3
@@ -35,7 +34,4 @@ xcuserdata
 Icon?
 .tags*
 
-build/
-.android/
-.ios/
 .flutter-plugins

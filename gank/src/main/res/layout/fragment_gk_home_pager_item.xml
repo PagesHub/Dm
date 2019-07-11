@@ -24,7 +24,6 @@
             android:layout_marginEnd="@dimen/layout_margin_10dp"
             android:ellipsize="end"
             android:maxLines="3"
-            android:textSize="@dimen/text_size_16sp"
             app:layout_constraintEnd_toStartOf="@id/banner"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -36,7 +35,7 @@
             android:background="@drawable/shape_top_bottom_bg"
             app:banner_default_image="@drawable/common_empty_bg"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintDimensionRatio="H,9:16"
+            app:layout_constraintDimensionRatio="H,0.618:1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -45,6 +44,7 @@
             style="@style/TextViewStyle"
             android:minWidth="@dimen/layout_margin_50dp"
             android:textColor="@color/color_1a"
+            android:textSize="@dimen/text_size_12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 

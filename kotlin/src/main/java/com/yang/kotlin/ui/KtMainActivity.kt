@@ -1,8 +1,12 @@
 package com.yang.kotlin.ui
 
+import android.os.Bundle
+import android.view.MenuItem
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentStatePagerAdapter
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.google.android.material.navigation.NavigationView
+import com.hjq.toast.ToastUtils
 import com.yang.kotlin.R
 import com.yang.kotlin.base.KotlinActivity
 import com.yang.kotlin.model.bean.SystemModel
@@ -16,8 +20,10 @@ import com.yang.kotlin.utils.Constants
 import com.yang.sdk.arounter.ARouterConstant
 import com.yang.sdk.utils.rxUtils.RxBus
 import com.yang.sdk.utils.rxUtils.RxBusMessage
+import com.yang.sdk.web.WebActivity
 import com.zhangyue.we.x2c.ano.Xml
 import kotlinx.android.synthetic.main.activity_kt_main.*
+import java.lang.System.exit
 
 /**
  * Describe: kotlin玩安卓主界面
@@ -25,7 +31,8 @@ import kotlinx.android.synthetic.main.activity_kt_main.*
  */
 @Xml(layouts = ["activity_kt_main"])
 @Route(path = ARouterConstant.KotlinPath.ACTIVITY_KOTLIN_MAIN)
-class KtMainActivity : KotlinActivity<KtMainViewModule>() {
+class KtMainActivity : KotlinActivity<KtMainViewModule>(), NavigationView.OnNavigationItemSelectedListener {
+
 
     override fun providerVMClass(): Class<KtMainViewModule>? = KtMainViewModule::class.java
 
@@ -39,7 +46,7 @@ class KtMainActivity : KotlinActivity<KtMainViewModule>() {
 
     override fun initView() {
         mTabRes = resources.getStringArray(R.array.tab_title)
-
+        navigationView.setNavigationItemSelectedListener(this)
         btnSearch.setOnClickListener {
             mFragment = KtSearchFragment()
             attachFragment()
@@ -62,6 +69,26 @@ class KtMainActivity : KotlinActivity<KtMainViewModule>() {
         }
     }
 
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.nav_collect -> ToastUtils.show("Collect!")
+            R.id.nav_tools -> goToWeb("https://www.wanandroid.com/tools", "工具")
+            R.id.nav_todo -> goToWeb("https://www.wanandroid.com/lg/todo/list/0", "待办")
+            R.id.nav_ask -> goToWeb("https://www.wanandroid.com/article/list_by_chapter/1?cid=440", "每日一问")
+            R.id.nav_about -> ToastUtils.show("About!")
+        }
+        return true
+    }
+
+    /**
+     * 跳转到WebActivity
+     */
+    private fun goToWeb(url: String, title: String) {
+        val bundle = Bundle()
+        bundle.putString(com.yang.sdk.constant.Constants.WEB_URL, url)
+        bundle.putString(com.yang.sdk.constant.Constants.WEB_TITLE, title)
+        readyGo(WebActivity::class.java, bundle)
+    }
 
     /**
      * 初始化Fragments
@@ -114,5 +141,10 @@ class KtMainActivity : KotlinActivity<KtMainViewModule>() {
             detachFragment()
         } else
             super.onBackPressed()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        RxBus.getInstanceBus().unSubscribe(this)
     }
 }
