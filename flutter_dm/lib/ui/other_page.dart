@@ -3,9 +3,7 @@ import 'package:flutter/material.dart';
 ///其他
 class OtherPage extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() {
-    return OtherPageState();
-  }
+  State<StatefulWidget> createState()=> OtherPageState();
 }
 
 class OtherPageState extends State<OtherPage>

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dm/ui/home_page.dart';
 import 'package:flutter_dm/ui/other_page.dart';
 import 'package:flutter_dm/ui/image_page.dart';
+import 'package:flutter_dm/ui/game_page.dart';
 
 class App extends StatefulWidget {
   @override
@@ -37,6 +38,7 @@ class AppState extends State<App> with TickerProviderStateMixin {
           children: <Widget>[
             HomePage(),
             OtherPage(),
+            GamePage(),
             ImagePage(),
           ],
         ),
@@ -53,6 +55,10 @@ class AppState extends State<App> with TickerProviderStateMixin {
             BottomNavigationBarItem(
               title: Text('其他'),
               icon: Icon(Icons.add),
+            ),
+            BottomNavigationBarItem(
+              title: Text('游戏'),
+              icon: Icon(Icons.games),
             ),
             BottomNavigationBarItem(
               title: Text('美图'),

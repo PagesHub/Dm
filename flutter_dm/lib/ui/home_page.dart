@@ -4,9 +4,7 @@ import 'package:flutter_dm/widget/ln_appbar.dart';
 ///首页
 class HomePage extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() {
-    return HomePageState();
-  }
+  State<StatefulWidget> createState() => HomePageState();
 }
 
 class HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin {
