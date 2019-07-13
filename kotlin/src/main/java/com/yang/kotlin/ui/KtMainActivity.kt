@@ -21,15 +21,12 @@ import com.yang.sdk.arounter.ARouterConstant
 import com.yang.sdk.utils.rxUtils.RxBus
 import com.yang.sdk.utils.rxUtils.RxBusMessage
 import com.yang.sdk.web.WebActivity
-import com.zhangyue.we.x2c.ano.Xml
 import kotlinx.android.synthetic.main.activity_kt_main.*
-import java.lang.System.exit
 
 /**
  * Describe: kotlin玩安卓主界面
  * Created by Yang on 2019/6/20  16:51
  */
-@Xml(layouts = ["activity_kt_main"])
 @Route(path = ARouterConstant.KotlinPath.ACTIVITY_KOTLIN_MAIN)
 class KtMainActivity : KotlinActivity<KtMainViewModule>(), NavigationView.OnNavigationItemSelectedListener {
 

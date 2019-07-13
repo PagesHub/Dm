@@ -13,7 +13,6 @@ import com.yang.gank.R2;
 import com.yang.gank.base.GankFragment;
 import com.yang.gank.mvp.contract.HomeContract;
 import com.yang.gank.mvp.presenter.HomePresenter;
-import com.zhangyue.we.x2c.ano.Xml;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +26,6 @@ import butterknife.BindView;
  * Describe: 主页
  * Created by Yang on 2019/7/1  14:34
  */
-@Xml(layouts = "fragment_gk_home")
 public class GkHomeFragment extends GankFragment implements HomeContract.View {
     @Inject
     HomePresenter mPresenter;

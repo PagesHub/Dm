@@ -11,7 +11,6 @@ import android.widget.TextView;
 import com.yang.sdk.app.BaseApplication;
 import com.yang.sdk.base.BaseLazyFragment;
 import com.yang.sdk.dagger.BaseComponent;
-import com.zhangyue.we.x2c.X2C;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -20,6 +19,7 @@ import java.util.Calendar;
 import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
@@ -47,10 +47,7 @@ public abstract class BaseFragment extends BaseLazyFragment implements BaseContr
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         if (bindLayout() != 0) {
-            if (setX2C())
-                return X2C.inflate(inflater.getContext(), bindLayout(), null);
-            else
-                return inflater.inflate(bindLayout(), null);
+            return inflater.inflate(bindLayout(), null);
         } else {
             return super.onCreateView(inflater, container, savedInstanceState);
         }

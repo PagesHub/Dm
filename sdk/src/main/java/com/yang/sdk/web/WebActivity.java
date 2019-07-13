@@ -10,9 +10,7 @@ import android.view.ViewParent;
 import com.yang.sdk.R;
 import com.yang.sdk.constant.Constants;
 import com.yang.sdk.mvp.BaseActivity;
-import com.zhangyue.we.x2c.ano.Xml;
 
-@Xml(layouts = "activity_web")
 public class WebActivity extends BaseActivity {
     private X5WebView mWebView;
     private String mUrl, mTitle;

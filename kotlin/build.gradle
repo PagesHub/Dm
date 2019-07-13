@@ -50,7 +50,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
     kapt 'com.alibaba:arouter-compiler:1.2.2'
-    kapt 'com.zhangyue.we:x2c-apt:1.1.2'
     implementation 'com.hyman:flowlayout-lib:1.1.2'
 
 }

@@ -10,7 +10,6 @@ import com.yang.gank.R2;
 import com.yang.gank.base.GankFragment;
 import com.yang.gank.mvp.contract.MainFgContract;
 import com.yang.gank.mvp.presenter.MainFgPresenter;
-import com.zhangyue.we.x2c.ano.Xml;
 
 import javax.inject.Inject;
 
@@ -20,7 +19,6 @@ import butterknife.BindView;
  * Describe: 干货集中module主页面,工程下进行单Activity+Fragments
  * Created by Yang on 2019/6/27  17:14
  */
-@Xml(layouts = "fragment_gk_main")
 public class GkMainFragment extends GankFragment implements MainFgContract.View {
     @Inject
     MainFgPresenter mPresenter;

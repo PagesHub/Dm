@@ -15,7 +15,6 @@ import com.yang.sdk.constant.Constants
 import com.yang.sdk.utils.DisplayUtils
 import com.yang.sdk.web.WebActivity
 import com.yang.sdk.weight.RecycleViewDivider
-import com.zhangyue.we.x2c.ano.Xml
 import kotlinx.android.synthetic.main.fragment_kt_project.*
 import kotlinx.android.synthetic.main.fragment_kt_system_child.*
 
@@ -23,7 +22,6 @@ import kotlinx.android.synthetic.main.fragment_kt_system_child.*
  * Describe: java文件说明
  * Created by Yang on 2019/6/21  17:53
  */
-@Xml(layouts = ["fragment_project"])
 class KtProjectFragment : KotlinFragment<KtProjectViewModule>() {
     override fun providerVMClass(): Class<KtProjectViewModule>? = KtProjectViewModule::class.java
 

@@ -6,7 +6,6 @@ import com.yang.kotlin.base.KotlinFragment
 import com.yang.kotlin.model.bean.SystemModel
 import com.yang.kotlin.utils.Constants
 import com.yang.sdk.utils.rxUtils.RxBus
-import com.zhangyue.we.x2c.ano.Xml
 import kotlinx.android.synthetic.main.fragment_kt_system_type.*
 import kotlinx.android.synthetic.main.fragment_kt_system_type.tabLayout
 import kotlinx.android.synthetic.main.fragment_kt_system_type.viewPager
@@ -16,7 +15,6 @@ import kotlinx.android.synthetic.main.fragment_kt_system_type.viewPager
  * Describe: java文件说明
  * Created by Yang on 2019/7/5  10:07
  */
-@Xml(layouts = ["fragment_kt_system_child"])
 class KtSystemTypeFragment(systemModel: SystemModel) : KotlinFragment<KtSystemTypeViewModule>() {
 
     override fun providerVMClass(): Class<KtSystemTypeViewModule>? = KtSystemTypeViewModule::class.java

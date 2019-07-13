@@ -18,7 +18,6 @@ import com.yang.sdk.arounter.ARouterUtils;
 import com.yang.sdk.arounter.providers.ModuleGankService;
 import com.yang.sdk.utils.PerfectClickListener;
 import com.yang.sdk.utils.animation.FabAnimator;
-import com.zhangyue.we.x2c.ano.Xml;
 
 import butterknife.BindView;
 
@@ -26,7 +25,6 @@ import butterknife.BindView;
  * Describe: java文件说明
  * Created by Yang on 2019/6/20  17:42
  */
-@Xml(layouts = "activity_main")
 public class MainActivity extends MBaseActivity implements FabAnimator.FabAnimatorListener {
     @BindView(R2.id.fragment_container)
     FrameLayout mFragmentContainer;

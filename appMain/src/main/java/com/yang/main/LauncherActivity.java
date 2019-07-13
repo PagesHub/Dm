@@ -4,7 +4,6 @@ package com.yang.main;
 import androidx.appcompat.widget.AppCompatTextView;
 
 import com.yang.main.base.MBaseActivity;
-import com.zhangyue.we.x2c.ano.Xml;
 
 import java.util.concurrent.TimeUnit;
 
@@ -14,7 +13,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 
 
-@Xml(layouts = "activity_launcher")
 public class LauncherActivity extends MBaseActivity {
 
     @BindView(R2.id.txv_number)

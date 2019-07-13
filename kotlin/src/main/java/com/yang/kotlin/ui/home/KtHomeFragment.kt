@@ -19,7 +19,6 @@ import com.yang.sdk.loader.BannerImageLoader
 import com.yang.sdk.web.WebActivity
 import com.youth.banner.Banner
 import com.youth.banner.BannerConfig
-import com.zhangyue.we.x2c.ano.Xml
 import kotlinx.android.synthetic.main.fragment_kt_home.*
 
 
@@ -27,7 +26,6 @@ import kotlinx.android.synthetic.main.fragment_kt_home.*
  * Describe: java文件说明
  * Created by Yang on 2019/6/21  17:46
  */
-@Xml(layouts = ["fragment_kt_home"])
 class KtHomeFragment : KotlinFragment<KtHomeViewModule>() {
 
     override fun providerVMClass(): Class<KtHomeViewModule>? = KtHomeViewModule::class.java

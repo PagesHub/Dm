@@ -8,12 +8,10 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.yang.main.base.MBaseActivity;
 import com.yang.sdk.arounter.ARouterConstant;
 import com.yang.sdk.arounter.ARouterUtils;
-import com.zhangyue.we.x2c.ano.Xml;
 
 import io.flutter.facade.Flutter;
 import io.flutter.view.FlutterView;
 
-@Xml(layouts = "activity_flutter")
 @Route(path = ARouterConstant.MainPath.ACTIVITY_MAIN_FLUTTER)
 public class FlutterActivity extends MBaseActivity {
 

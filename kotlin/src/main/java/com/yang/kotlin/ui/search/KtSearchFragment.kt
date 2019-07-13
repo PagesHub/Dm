@@ -21,7 +21,6 @@ import com.yang.kotlin.ui.adpater.SearchArticleAdapter
 import com.yang.kotlin.utils.Constants
 import com.yang.sdk.utils.rxUtils.RxBus
 import com.yang.sdk.web.WebActivity
-import com.zhangyue.we.x2c.ano.Xml
 import com.zhy.view.flowlayout.FlowLayout
 import com.zhy.view.flowlayout.TagAdapter
 import kotlinx.android.synthetic.main.fragment_kt_home.*
@@ -31,7 +30,6 @@ import kotlinx.android.synthetic.main.fragment_kt_search.*
  * Describe: java文件说明
  * Created by Yang on 2019/7/10  10:41
  */
-@Xml(layouts = ["fragment_kt_search"])
 class KtSearchFragment : KotlinFragment<KtSearchViewModule>() {
 
     override fun providerVMClass(): Class<KtSearchViewModule>? = KtSearchViewModule::class.java

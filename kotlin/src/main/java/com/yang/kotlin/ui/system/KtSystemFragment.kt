@@ -9,14 +9,12 @@ import com.yang.kotlin.model.bean.SystemModel
 import com.yang.kotlin.ui.adpater.SystemAdapter
 import com.yang.kotlin.utils.Constants
 import com.yang.sdk.utils.rxUtils.RxBus
-import com.zhangyue.we.x2c.ano.Xml
 import kotlinx.android.synthetic.main.fragment_kt_system.*
 
 /**
  * Describe: java文件说明
  * Created by Yang on 2019/6/21  17:55
  */
-@Xml(layouts = ["fragment_system"])
 class KtSystemFragment : KotlinFragment<KtSystemViewModule>() {
     override fun providerVMClass(): Class<KtSystemViewModule>? = KtSystemViewModule::class.java
     private val mAdapter by lazy { SystemAdapter() }

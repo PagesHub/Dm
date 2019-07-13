@@ -12,14 +12,12 @@ import com.yang.kotlin.model.bean.SystemChildModel
 import com.yang.kotlin.ui.adpater.TypeArticleAdapter
 import com.yang.kotlin.utils.Constants
 import com.yang.sdk.web.WebActivity
-import com.zhangyue.we.x2c.ano.Xml
 import kotlinx.android.synthetic.main.fragment_kt_system_child.*
 
 /**
  * Describe: java文件说明
  * Created by Yang on 2019/7/5  11:49
  */
-@Xml(layouts = ["fragment_kt_system_child"])
 class KtSystemChildFragment(systemChildModel: SystemChildModel) : KotlinFragment<KtSystemChildViewModule>() {
     private var mSystemChildModel = systemChildModel
     private val mAdapter by lazy { TypeArticleAdapter() }

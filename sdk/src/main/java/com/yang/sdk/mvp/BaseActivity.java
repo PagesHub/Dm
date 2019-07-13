@@ -9,7 +9,6 @@ import com.yang.sdk.R;
 import com.yang.sdk.app.BaseApplication;
 import com.yang.sdk.base.BaseAppCompatActivity;
 import com.yang.sdk.dagger.BaseComponent;
-import com.zhangyue.we.x2c.X2C;
 
 import java.util.Calendar;
 
@@ -30,9 +29,7 @@ public abstract class BaseActivity extends BaseAppCompatActivity implements Base
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (setX2C())
-            X2C.setContentView(this, bindLayout());
-        else setContentView(bindLayout());
+        setContentView(bindLayout());
         //注册ButterKnife
         ButterKnife.bind(this);
         initView();

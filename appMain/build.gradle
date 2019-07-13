@@ -42,10 +42,8 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-    //ButterKnife
-    annotationProcessor "com.jakewharton:butterknife-compiler:10.1.0"
-    //x2c
-    annotationProcessor 'com.zhangyue.we:x2c-apt:1.1.2'
     //arouter
     annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
+    //ButterKnife
+    annotationProcessor "com.jakewharton:butterknife-compiler:10.1.0"
 }
