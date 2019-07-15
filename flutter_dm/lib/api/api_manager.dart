@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_dm/api/api_config.dart';
-import 'package:flutter_dm/model/gank_basic_entity.dart';
-import 'package:flutter_dm/model/gank_data_entity.dart';
 import 'package:flutter_dm/res/strings.dart';
+import 'api_config.dart';
+import 'package:flutter_dm/model/gank_basic_entity.dart';
 import 'package:flutter_dm/utils/toast_utils.dart';
+import 'package:flutter_dm/model/gank_data_entity.dart';
 
 class ApiManager {
   Dio _dio;

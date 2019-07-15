@@ -1,9 +1,9 @@
 package io.flutter.facade;
 
 import android.app.Activity;
-
 import android.content.Context;
 import android.os.Bundle;
+
 
 
 import androidx.annotation.NonNull;
@@ -13,11 +13,11 @@ import androidx.lifecycle.OnLifecycleEvent;
 
 import io.flutter.plugin.common.BasicMessageChannel;
 import io.flutter.plugin.common.StringCodec;
+import io.flutter.plugins.GeneratedPluginRegistrant;
 import io.flutter.view.FlutterMain;
 import io.flutter.view.FlutterNativeView;
 import io.flutter.view.FlutterRunArguments;
 import io.flutter.view.FlutterView;
-import io.flutter.plugins.GeneratedPluginRegistrant;
 
 /**
  * Main entry point for using Flutter in Android applications.

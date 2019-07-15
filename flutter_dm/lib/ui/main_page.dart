@@ -6,9 +6,7 @@ import 'package:flutter_dm/ui/game_page.dart';
 
 class App extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() {
-    return new AppState();
-  }
+  State<StatefulWidget> createState() => new AppState();
 }
 
 class AppState extends State<App> with TickerProviderStateMixin {

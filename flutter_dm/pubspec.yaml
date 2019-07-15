@@ -28,7 +28,7 @@ dependencies:
   cupertino_icons: ^0.1.2
   transparent_image: ^0.1.0
   dio: ^2.1.0
-  photo_view: ^0.2.2
+  photo_view: ^0.4.2
 
 dev_dependencies:
   flutter_test:
