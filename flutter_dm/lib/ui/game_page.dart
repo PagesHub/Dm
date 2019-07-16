@@ -11,15 +11,20 @@ class HomePageState extends State<GamePage>
     with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
-    return ListView(
+    return GridView.count(
+      crossAxisCount: 1,
+      childAspectRatio:2,
       children: <Widget>[
-        MaterialButton(
-            height: 150,
-            color: Colors.amber,
-            child: Text('俄罗斯方块'),
-            onPressed: () {
-              playGame();
-            }),
+        new Card(
+          elevation: 10,
+          child: MaterialButton(
+              height: 150,
+              color: Colors.amber,
+              child: Text('俄罗斯方块'),
+              onPressed: () {
+                playGame();
+              }),
+        ),
       ],
     );
   }
