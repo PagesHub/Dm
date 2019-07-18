@@ -9,6 +9,8 @@ import com.squareup.leakcanary.LeakCanary;
 import com.tencent.smtt.sdk.QbSdk;
 import com.yang.sdk.BuildConfig;
 import com.yang.sdk.callback.BaseLifecycleCallback;
+import com.yang.sdk.callback.LogCallback;
+import com.yang.sdk.threadpool.PoolThread;
 import com.yang.sdk.utils.LogUtils;
 
 /**
@@ -21,16 +23,17 @@ public enum SdkConfig {
     INSTANCE;
 
     private Application mApplication;
+    private PoolThread executor;
+
 
     public void initConfig(Application application) {
         this.mApplication = application;
+        initARouter();
+        initThreadPool();
         Utils.init(application);
         ToastUtils.init(application);
         BaseLifecycleCallback.getInstance().init(application);
         LeakCanary.install(application);
-        initARouter();
-        initX5WebCore();
-        initThreadPool();
     }
 
 
@@ -38,32 +41,29 @@ public enum SdkConfig {
      * 初始化线程池管理器
      */
     private void initThreadPool() {
-    }
-
-    /**
-     * 设置X5初始化完成的回调接口
-     */
-    private void initX5WebCore() {
-        if (!QbSdk.isTbsCoreInited()) {
-            QbSdk.preInit(mApplication, new QbSdk.PreInitCallback() {
-                @Override
-                public void onCoreInitFinished() {
-                }
-
-                @Override
-                public void onViewInitFinished(boolean b) {
-                }
-            });
+        // 创建一个独立的实例进行使用
+        if (executor==null){
+            executor = PoolThread.ThreadBuilder
+                    .createFixed(6)
+                    .setPriority(Thread.MAX_PRIORITY)
+                    .setCallback(new LogCallback())
+                    .build();
         }
     }
 
+    public PoolThread getExecutor() {
+        return executor;
+    }
+
     private void initARouter() {
-        if (BuildConfig.DEBUG) { //打印日志
+        if (BuildConfig.DEBUG) {
+            //打印日志
             ARouter.openLog();
             //开启调试模式(如果在InstantRun模式下运行，必须开启调试模式！线上版本需要关闭,否则有安全风险)
             ARouter.openDebug();
         }
-        ARouter.init(mApplication);        //推荐在Application中初始化
+        //推荐在Application中初始化
+        ARouter.init(mApplication);
     }
 
 }

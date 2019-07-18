@@ -5,7 +5,7 @@ class TeTris extends StatefulWidget {
   State<StatefulWidget> createState() => TeTrisState();
 }
 
-class TeTrisState extends State<TeTris> with SingleTickerProviderStateMixin {
+class TeTrisState extends State<TeTris>  {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -13,8 +13,11 @@ class TeTrisState extends State<TeTris> with SingleTickerProviderStateMixin {
         body: const Center(
           child: Text('TeTris'),
         ),
-      ), onWillPop: () {print("123784784584584"); },
+      ),
+      onWillPop: () {
+        print("返回键点击了");Navigator.pop(context);
+        return Future.value(false);
+      },
     );
   }
 }
-

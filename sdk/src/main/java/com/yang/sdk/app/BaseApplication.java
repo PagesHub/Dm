@@ -34,9 +34,8 @@ public class BaseApplication extends Application {
         setDebug(true);
         SdkConfig.INSTANCE.initConfig(this);
         //在子线程中初始化
-        //InitializeService.start(this);
+        InitializeService.start(this);
         baseComponent = DaggerBaseComponent.builder().baseModule(new BaseModule(this)).build();
-
         //Module类的APP初始化
         modulesApplicationInit();
     }

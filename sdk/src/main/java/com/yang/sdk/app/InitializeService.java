@@ -64,13 +64,15 @@ public class InitializeService extends IntentService {
         super.onCreate();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel channel = new NotificationChannel("Ln", "Ln-App", NotificationManager.IMPORTANCE_MIN);
-            channel.enableVibration(false);//去除振动
+            //去除振动
+            channel.enableVibration(false);
             NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
             if (manager != null) manager.createNotificationChannel(channel);
             Notification.Builder builder = new Notification.Builder(getApplicationContext(), "Ln")
                     .setContentTitle("正在后台运行")
                     .setSmallIcon(R.drawable.shape_empty_bg);
-            startForeground(1, builder.build());//id must not be 0,即禁止是0
+            //id must not be 0,即禁止是0
+            startForeground(1, builder.build());
         }
     }
 

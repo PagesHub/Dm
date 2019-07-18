@@ -4,6 +4,7 @@ package com.yang.main;
 import androidx.appcompat.widget.AppCompatTextView;
 
 import com.yang.main.base.MBaseActivity;
+import com.yang.sdk.config.SdkConfig;
 
 import java.util.concurrent.TimeUnit;
 
@@ -12,7 +13,11 @@ import io.reactivex.Flowable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 
-
+/**
+  * @Author:         Yang
+  * @Description:    java类作用描述
+  * @CreateDate:     2019/7/18 2019/7/18
+ */
 public class LauncherActivity extends MBaseActivity {
 
     @BindView(R2.id.txv_number)
@@ -36,6 +41,7 @@ public class LauncherActivity extends MBaseActivity {
                         readyGoThenKill(MainActivity.class);
 
                 }).subscribe();
+
     }
 
     @Override
